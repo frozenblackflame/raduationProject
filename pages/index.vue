@@ -1,6 +1,6 @@
 <template >
   <center>
-    <div id="index" style="width: 80%;">
+    <div style="width: 80%;">
       <el-container>
         <el-container>
           <el-header height>
