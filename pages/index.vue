@@ -10,7 +10,7 @@
             <Main></Main>
           </el-main>
           <el-footer height>
-            <!-- Footer content -->
+            <Foot></Foot>
           </el-footer>
         </el-container>
       </el-container>
@@ -20,12 +20,14 @@
 
 <script>
 import Header from "~/components/Header";
-import Main from "~/components/main";
+import Main from "~/components/Main";
+import Foot from "~/components/Foot";
 
 export default {
   components: {
     Header,
-    Main
+    Main,
+    Foot
   }
 };
 </script>

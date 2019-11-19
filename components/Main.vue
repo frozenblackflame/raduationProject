@@ -165,4 +165,7 @@ export default {
 .card_title{
   width: 35%;
 }
+.el-main{
+  padding-bottom: 0px;
+}
 </style>
