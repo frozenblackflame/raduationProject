@@ -6,7 +6,7 @@
       mode="horizontal"
       class="el-menu"
       @select="handleSelect"
-      background-color="#20258b"
+      background-color='#20258b'
       text-color="#fff"
       active-text-color="#ffd04b"
     >
@@ -56,10 +56,4 @@ export default {
 };
 </script>
 <style>
-.el-menu {
-  margin-top: 1px;
-
-  /* background-repeat: repeat;
-  background-image: url("../static/bj02.jpg"); */
-}
 </style>
