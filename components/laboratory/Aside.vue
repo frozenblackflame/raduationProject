@@ -20,7 +20,6 @@ export default {
   data() {
     return {
       menus: [
-        { menu: "实验室概况" },
         { menu: "实验室介绍" },
         { menu: "实验室领导介绍" },
         { menu: "行政机构介绍" }

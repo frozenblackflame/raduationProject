@@ -2,7 +2,8 @@
   <div>
     <el-image style="width:100%; height: 200px" :src="imageurl"></el-image>
     <el-menu
-      :default-active="activeIndex"
+      :default-active="this.$route.path"
+      router
       mode="horizontal"
       class="el-menu"
       @select="handleSelect"
@@ -10,10 +11,10 @@
       text-color="#fff"
       active-text-color="#ffd04b"
     >
-      <el-menu-item index="1">首页</el-menu-item>
+      <el-menu-item index="/">首页</el-menu-item>
       <el-submenu index="2">
         <template slot="title">实验室概况</template>
-        <el-menu-item index="2-1">实验室介绍</el-menu-item>
+        <el-menu-item index="/laboratory/Introduction">实验室介绍</el-menu-item>
         <el-menu-item index="2-2">实验室领导介绍</el-menu-item>
         <el-menu-item index="2-3">行政机构介绍</el-menu-item>
       </el-submenu>

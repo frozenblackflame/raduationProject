@@ -19,9 +19,9 @@
 </template>
 
 <script>
-import Header from "~/components/Header";
-import Aside from "../components/laboratory/Aside";
-import Main from "../components/laboratory/MainPage";
+import Header from "../../components/Header";
+import Aside from "../../components/laboratory/Aside";
+import Main from "../../components/laboratory/MainPage";
 export default {
   components: { Header, Aside, Main }
 };
