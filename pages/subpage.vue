@@ -5,15 +5,13 @@
         <el-header height>
           <Header></Header>
         </el-header>
-        <el-container >
-          <el-aside >
+        <el-container>
+          <el-aside width="200px">
             <Aside></Aside>
           </el-aside>
-          <el-container>
-            <el-main height >
-            
-            </el-main>
-          </el-container>
+          <el-main>
+            <Main></Main>
+          </el-main>
         </el-container>
       </el-container>
     </div>
@@ -23,16 +21,18 @@
 <script>
 import Header from "~/components/Header";
 import Aside from "../components/laboratory/Aside";
+import Main from "../components/laboratory/MainPage";
 export default {
-  components: { Header, Aside }
+  components: { Header, Aside, Main }
 };
 </script>
 
 <style>
-.el-aside{
-    padding-left: 20px;
+.el-aside {
+  padding-left: 20px;
 }
-.el-main{
-margin-right: 20px;
+.el-main {
+  margin-right: 20px;
+  width: 100%;
 }
 </style>
