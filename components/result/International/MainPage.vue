@@ -1,6 +1,7 @@
 <template>
   <div class="imagepage">
-    <h1>这里是内容展示页面，可以随便修改这里的文件。</h1>
+    <h1>这里是内容展示页面，可以随便修改这里的文章。</h1>
+    <h1>国际标准</h1>
     <h3>这里可以展示图片</h3>
     <img :src="image" class="image" />
   </div>
@@ -10,7 +11,7 @@
 export default {
   data() {
     return {
-      image: require("../../static/shiyanshi.png")
+      image: require("../../../static/shiyanshi.png")
     };
   }
 };

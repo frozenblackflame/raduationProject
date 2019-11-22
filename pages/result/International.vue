@@ -20,8 +20,8 @@
 
 <script>
 import Header from "../../components/Header";
-import Aside from "../../components/laboratory/Aside";
-import Main from "../../components/laboratory/Introduction/MainPage";
+import Aside from "../../components/result/Aside";
+import Main from "../../components/result/International/MainPage";
 export default {
   components: { Header, Aside, Main }
 };

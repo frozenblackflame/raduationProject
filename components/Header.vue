@@ -15,24 +15,24 @@
       <el-submenu index="2">
         <template slot="title">实验室概况</template>
         <el-menu-item index="/laboratory/Introduction">实验室介绍</el-menu-item>
-        <el-menu-item index="2-2">实验室领导介绍</el-menu-item>
-        <el-menu-item index="2-3">行政机构介绍</el-menu-item>
+        <el-menu-item index="/laboratory/leadership">实验室领导介绍</el-menu-item>
+        <el-menu-item index="/laboratory/mechanism">行政机构介绍</el-menu-item>
       </el-submenu>
       <el-submenu index="3">
         <template slot="title">学术队伍</template>
-        <el-menu-item index="3-1">学术带头人</el-menu-item>
-        <el-menu-item index="3-2">骨干教师</el-menu-item>
+        <el-menu-item index="/academic/leader">学术带头人</el-menu-item>
+        <el-menu-item index="/academic/teacher">骨干教师</el-menu-item>
       </el-submenu>
       <el-submenu index="4">
         <template slot="title">科技成果</template>
-        <el-menu-item index="4-1">科研成果</el-menu-item>
-        <el-menu-item index="4-2">国际标准</el-menu-item>
-        <el-menu-item index="4-3">高水平文章</el-menu-item>
+        <el-menu-item index="/result/research">科研成果</el-menu-item>
+        <el-menu-item index="/result/International">国际标准</el-menu-item>
+        <el-menu-item index="/result/article">高水平文章</el-menu-item>
       </el-submenu>
       <el-submenu index="5">
         <template slot="title">实验室管理</template>
-        <el-menu-item index="5-1">实验室规定</el-menu-item>
-        <el-menu-item index="5-2">实验室管理员</el-menu-item>
+        <el-menu-item index="/management/Regulation">实验室规定</el-menu-item>
+        <el-menu-item index="/management/administrator">实验室管理员</el-menu-item>
       </el-submenu>
       <el-menu-item index="6">联系我们</el-menu-item>
     </el-menu>
