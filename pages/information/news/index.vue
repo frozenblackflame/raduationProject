@@ -3,7 +3,7 @@
     <div style="width: 80%;">
       <el-container>
         <el-header height>
-          <Header></Header>
+           <el-page-header @back="goBack" content="详情页面"></el-page-header>
         </el-header>
         <el-main>
           <div class="imagepage">
@@ -24,6 +24,11 @@ export default {
     return {
       image: require("../../../static/shiyanshi.png")
     };
+  },
+  methods: {
+    goBack() {
+      console.log("go back");
+    }
   }
 };
 </script>
@@ -35,5 +40,16 @@ export default {
 }
 .imagepage {
   width: 100%;
+}
+.el-page-header__left .el-icon-back,
+.el-page-header__title,
+.el-page-header__content {
+  font-size: 50px;
+}
+.el-page-header__content,.el-page-header__title{
+ padding-top: 10px;
+}
+.el-page-header__left::after {
+  height: 50px;
 }
 </style>
