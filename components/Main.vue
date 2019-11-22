@@ -65,34 +65,34 @@ export default {
   data() {
     return {
       images: [
-        { href: require("../static/bimg1.jpg"), title: "新闻资讯", url: "#" },
-        { href: require("../static/bimg2.jpg"), title: "公告展示", url: "#" },
-        { href: require("../static/bimg3.jpg"), title: "最新成果", url: "#" },
-        { href: require("../static/bimg4.jpg"), title: "科技成果", url: "#" }
+        { href: require("../static/bimg1.jpg"), title: "新闻资讯", url: "/information/news/" },
+        { href: require("../static/bimg2.jpg"), title: "公告展示", url: "/information/announcement/" },
+        { href: require("../static/bimg3.jpg"), title: "最新成果", url: "/information/latestResults/" },
+        { href: require("../static/bimg4.jpg"), title: "科技成果", url: "/information/technologicalAchievements/" }
       ],
       echnology: [
-        { text: "科技成果1", url: "#" },
-        { text: "科技成果2", url: "#" },
-        { text: "科技成果3", url: "#" },
-        { text: "科技成果4", url: "#" }
+        { text: "科技成果1", url: "/information/technologicalAchievements/" },
+        { text: "科技成果2", url: "/information/technologicalAchievements/" },
+        { text: "科技成果3", url: "/information/technologicalAchievements/" },
+        { text: "科技成果4", url: "/information/technologicalAchievements/" }
       ],
       newest: [
-        { text: "最新成果1", url: "#" },
-        { text: "最新成果2", url: "#" },
-        { text: "最新成果3", url: "#" },
-        { text: "最新成果4", url: "#" }
+        { text: "最新成果1", url: "/information/latestResults/" },
+        { text: "最新成果2", url: "/information/latestResults/" },
+        { text: "最新成果3", url: "/information/latestResults/" },
+        { text: "最新成果4", url: "/information/latestResults/" }
       ],
       news: [
-        { text: "新闻资讯1", url: "#" },
-        { text: "新闻资讯2", url: "#" },
-        { text: "新闻资讯3", url: "#" },
-        { text: "新闻资讯4", url: "#" }
+        { text: "新闻资讯1", url: "/information/news/" },
+        { text: "新闻资讯2", url: "/information/news/" },
+        { text: "新闻资讯3", url: "/information/news/" },
+        { text: "新闻资讯4", url: "/information/news/" }
       ],
       bulletin: [
-        { text: "公告1", url: "#" },
-        { text: "公告2", url: "#" },
-        { text: "公告3", url: "#" },
-        { text: "公告4", url: "#" }
+        { text: "公告1", url: "/information/announcement/" },
+        { text: "公告2", url: "/information/announcement/" },
+        { text: "公告3", url: "/information/announcement/" },
+        { text: "公告4", url: "/information/announcement/" }
       ]
     };
   }
