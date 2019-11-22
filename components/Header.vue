@@ -34,7 +34,7 @@
         <el-menu-item index="/management/Regulation">实验室规定</el-menu-item>
         <el-menu-item index="/management/administrator">实验室管理员</el-menu-item>
       </el-submenu>
-      <el-menu-item index="6">联系我们</el-menu-item>
+      <el-menu-item index="/contact/contact">联系我们</el-menu-item>
     </el-menu>
   </div>
 </template>
