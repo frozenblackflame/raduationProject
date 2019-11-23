@@ -22,12 +22,13 @@
 export default {
   data() {
     return {
-      image: require("../../../static/shiyanshi.png")
+      image: require("../../../static/shiyanshi.png"),
+      flag:""
     };
   },
   methods: {
     goBack() {
-      console.log("go back");
+      this.$router.go(-1)
     }
   }
 };

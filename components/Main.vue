@@ -2,11 +2,11 @@
   <div>
     <el-carousel trigger="hover" type="card">
       <el-carousel-item v-for="item in images" :key="item.title">
-        <a :href="item.url">
+        <nuxt-link :to="item.url">
           <div class="a"></div>
           <div class="title">{{ item.title }}</div>
           <img :src="item.href" />
-        </a>
+        </nuxt-link>
       </el-carousel-item>
     </el-carousel>
     <el-row>
@@ -14,10 +14,11 @@
         <el-card class="box-card">
           <div slot="header" class="clearfix">
             <span class="card_title">新闻资讯</span>
-            <el-button style="float: right; padding: 3px 0" type="text">更多>>></el-button>
+            <nuxt-link to="/information/news/list" style="float: right; padding: 3px 0" type="text">更多>>></nuxt-link>
           </div>
-          <div v-for="o in news" :key="o" class="text item">
-            <a :href="o.url">{{o.text }}</a>
+          <div v-for="(o,index) in news" :key="index" class="text item">
+           <!-- <a :href="o.url">{{o.text }}</a> -->
+           <nuxt-link :to="o.url">{{ o.text }}</nuxt-link>
           </div>
         </el-card>
       </el-col>
@@ -25,10 +26,10 @@
         <el-card class="box-card">
           <div slot="header" class="clearfix">
             <span class="card_title">公告展示</span>
-            <el-button style="float: right; padding: 3px 0" type="text">更多>>></el-button>
+            <nuxt-link to="/information/announcement/list" style="float: right; padding: 3px 0" type="text">更多>>></nuxt-link>
           </div>
-          <div v-for="o in bulletin" :key="o" class="text item">
-            <a :href="o.url">{{o.text }}</a>
+          <div v-for="(o,index) in bulletin" :key="index" class="text item">
+            <nuxt-link :to="o.url">{{ o.text }}</nuxt-link>
           </div>
         </el-card>
       </el-col>
@@ -38,10 +39,10 @@
         <el-card class="box-card">
           <div slot="header" class="clearfix">
             <span class="card_title">最新成果</span>
-            <el-button style="float: right; padding: 3px 0" type="text">更多>>></el-button>
+            <nuxt-link to="/information/latestResults/list" style="float: right; padding: 3px 0" type="text">更多>>></nuxt-link>
           </div>
-          <div v-for="o in newest" :key="o" class="text item">
-            <a :href="o.url">{{o.text }}</a>
+          <div v-for="(o,index) in newest" :key="index" class="text item">
+            <nuxt-link :to="o.url">{{ o.text }}</nuxt-link>
           </div>
         </el-card>
       </el-col>
@@ -49,10 +50,10 @@
         <el-card class="box-card">
           <div slot="header" class="clearfix">
             <span class="card_title">科技成果</span>
-            <el-button style="float: right; padding: 3px 0" type="text">更多>>></el-button>
+            <nuxt-link to="/information/technologicalAchievements/list" style="float: right; padding: 3px 0" type="text">更多>>></nuxt-link>
           </div>
-          <div v-for="o in echnology" :key="o" class="text item">
-            <a :href="o.url">{{o.text }}</a>
+          <div v-for="(o,index) in echnology" :key="index" class="text item">
+            <nuxt-link :to="o.url">{{ o.text }}</nuxt-link>
           </div>
         </el-card>
       </el-col>
@@ -95,7 +96,7 @@ export default {
         { text: "公告4", url: "/information/announcement/" }
       ]
     };
-  }
+  },
 };
 </script>
 
@@ -145,6 +146,9 @@ export default {
 .box-card {
   width: 97%;
 
+}
+a {
+  text-decoration: none;
 }
 .card_title {
   float: left;
