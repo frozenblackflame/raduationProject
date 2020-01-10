@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-image style="width:100%; height: 200px" :src="imageurl"></el-image>
+    <el-image style="width:100%; height: 120px" :src="imageurl"></el-image>
     <el-menu
       :default-active="this.$route.path"
       router
@@ -57,4 +57,7 @@ export default {
 };
 </script>
 <style>
+  .el-menu-item,.el-submenu__title{
+    font-size: 20px;
+  }
 </style>
