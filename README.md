@@ -1,6 +1,6 @@
 # raduationProject
 
-> My awe-inspiring Nuxt.js project
+毕业设计开发
 
 ## Build Setup
 
