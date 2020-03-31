@@ -5,7 +5,7 @@
       router
       class="el-menu-vertical"
       @select="handleSelect"
-      background-color="#20258b"
+      background-color="#8968CD"
       text-color="#fff"
       active-text-color="#ffd04b"
     >

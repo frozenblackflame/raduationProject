@@ -21,7 +21,7 @@
 <script>
 import Header from "../../components/Header";
 import Aside from "../../components/academic/Aside";
-import Main from "../../components/academic/leader/MainPage";
+import Main from "../../components/academic/leader/MainsPage";
 export default {
   components: { Header, Aside, Main }
 };

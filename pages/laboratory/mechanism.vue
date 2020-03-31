@@ -19,20 +19,20 @@
 </template>
 
 <script>
-import Header from "../../components/Header";
-import Aside from "../../components/laboratory/Aside";
-import Main from "../../components/laboratory/mechanism/MainPage";
-export default {
-  components: { Header, Aside, Main }
-};
+  import Header from "../../components/Header";
+  import Aside from "../../components/laboratory/Aside";
+  import Main from "../../components/laboratory/mechanism/MechanismPage.vue";
+  export default {
+    components: { Header, Aside, Main }
+  };
 </script>
 
 <style>
-.el-aside {
-  padding-left: 20px;
-}
-.el-main {
-  margin-right: 20px;
-  width: 100%;
-}
+  .el-aside {
+    padding-left: 20px;
+  }
+  .el-main {
+    margin-right: 20px;
+    width: 100%;
+  }
 </style>

@@ -7,7 +7,7 @@
       mode="horizontal"
       class="el-menu"
       @select="handleSelect"
-      background-color='#20258b'
+      background-color="#8968CD"
       text-color="#fff"
       active-text-color="#ffd04b"
     >
@@ -35,7 +35,12 @@
         <el-menu-item index="/management/administrator">实验室管理员</el-menu-item>
       </el-submenu>
       <el-menu-item index="/contact/contact">联系我们</el-menu-item>
+      <el-menu-item index="/userlogin/login" v-if="showButton">登录</el-menu-item>
+      <el-menu-item index="/userinfo/user" v-if="userButton">用户信息</el-menu-item>
+      <el-menu-item  v-if="userButton" @click="loginout">退出登录</el-menu-item>
+<!--      <nuxt-link to="">退出登录</nuxt-link>-->
     </el-menu>
+
   </div>
 </template>
 <script>
@@ -46,18 +51,43 @@ export default {
     return {
       activeIndex: "1",
       imageurl: lhd,
-      url: bj02
-    };
+      url: bj02,
+      showButton: true,
+      userButton: false
+    }
   },
   methods: {
+    async show(){
+      console.log(localStorage.getItem("role"));
+      if (localStorage.getItem("role")!= null){
+        this.showButton = false;
+        this.userButton = true;
+      }else {
+        this.showButton=true;
+        this.userButton = false;
+      }
+    },
     handleSelect(key, keyPath) {
+      if (localStorage.getItem("role")!= null){
+        this.button = false;
+      }else {
+        this.button=true;
+      }
       console.log(key, keyPath);
+    },
+    loginout(){
+      localStorage.clear();
+      // alert("清空缓存")
+      this.$router.push("/userlogin/login")
     }
+  },
+  created() {
+    this.show()
   }
 };
 </script>
 <style>
   .el-menu-item,.el-submenu__title{
-    font-size: 20px;
+    font-size: 16px;
   }
 </style>

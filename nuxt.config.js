@@ -44,8 +44,12 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-   
+    // 请求代理配置，解决跨域
+    '@gauseen/nuxt-proxy',
   ],
+  proxyTable: {
+    '/api': { target: 'http://localhost:8080', ws: false }
+  },
   /*
   ** Build configuration
   */
