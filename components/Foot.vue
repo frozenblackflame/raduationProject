@@ -16,9 +16,12 @@ export default {};
 <style>
 .el-footer {
   background-image: url("../static/foot.gif");
-  width: 95%;
-  height: 80px;;
+  /*width: 95%;*/
+  height: 80px;
+  margin-left: 25px;
+  margin-right: 25px;
 }
+
 .foot{
     padding-top: 20px;
 }
