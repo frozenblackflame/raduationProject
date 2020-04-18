@@ -38,8 +38,10 @@
       <el-menu-item index="/userlogin/login" v-if="showButton">登录</el-menu-item>
       <el-menu-item index="/userinfo/user" v-if="userButton">用户信息</el-menu-item>
       <el-menu-item  v-if="userButton" @click="loginout">退出登录</el-menu-item>
+      <el-menu-item style="position: absolute;top: 0px;left: 1200px"><span>{{headmsg}}</span></el-menu-item>
 <!--      <nuxt-link to="">退出登录</nuxt-link>-->
     </el-menu>
+
 
   </div>
 </template>
@@ -53,7 +55,8 @@ export default {
       imageurl: lhd,
       url: bj02,
       showButton: true,
-      userButton: false
+      userButton: false,
+      headmsg:"登录状态：未登录"
     }
   },
   methods: {
@@ -62,6 +65,7 @@ export default {
       if (localStorage.getItem("role")!= null){
         this.showButton = false;
         this.userButton = true;
+        this.headmsg = "欢迎您！"  + localStorage.getItem("username")
       }else {
         this.showButton=true;
         this.userButton = false;

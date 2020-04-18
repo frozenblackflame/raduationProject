@@ -71,9 +71,9 @@
           url: `http://localhost:8080/api/teacher/updateTeacher`,
           data: {
             "id": getQueryString("id"),
-            "leader_introduce": this.form.name,
-            "leaderName": this.form.desc,
-            "leaderImg": this.form.imageUrl
+            "teacher_introduce": this.form.desc,
+            "teacherName": this.form.name,
+            "teacherImg": this.form.imageUrl
           }
         }).then((res) => {
           console.log(res.code)

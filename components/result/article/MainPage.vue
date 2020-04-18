@@ -1,7 +1,9 @@
 <template>
   <div>
+    <label style="margin-left: 700px">文章名称：</label><el-input style="width: 15%;" v-model="articlename"></el-input>
+    <el-button type="primary" @click="getData">搜索</el-button>
     <el-container>
-  <el-table :data="listDate" border stripe>
+  <el-table :data="listDate" border stripe style="margin-top: 10px;font-size:15px">
     <el-table-column prop="title" label="文章标题"></el-table-column>
     <el-table-column prop="desc" label="文章详情"></el-table-column>
     <el-table-column prop="createTime" label="日期" :formatter="dateFormat" align="center" show-overflow-tooltip></el-table-column>
@@ -30,6 +32,15 @@
              :style="{color:'#198ce9','cursor':'pointer'}"
              type="primary" @click="toAddPage"
   ><span style="color: black">新增</span></el-button>
+    <el-pagination
+      background
+      layout="prev, pager, next"
+      :total="total"
+      @current-change="handleCurrentChange"
+      :current-page.sync="currentPage1"
+      :page-size="7"
+    >
+    </el-pagination>
   </div>
 
 </template>
@@ -44,6 +55,11 @@
         id: "",
         showButton: false,
         dialogFormVisible: false,
+        articlename:'',
+        page:1,
+        total:0,
+        currentPage1:1,
+
       };
     },
     methods: {
@@ -56,11 +72,14 @@
           method: 'post',
           url: `http://localhost:8080/api/gaoshuiping/getAllGao`,
           data:{
-            "id": id
+            "id": id,
+            "articlename":this.articlename,
+            "page": this.page
           }
         })
         // alert(data.extend.results[0].id)
-        this.listDate = data.extend.results
+        this.listDate = data.extend.results.list
+        this.total = data.extend.results.total
         if (localStorage.getItem("role") === "admin") {
           this.showButton = true;
         } else {
@@ -103,8 +122,11 @@
       },
       toAddPage(){
         this.$router.push("/gao/gaoadd")
+      },
+      handleCurrentChange(val){
+        this.page = val;
+        this.getData()
       }
-
     },
     created () {
       this.getData ()

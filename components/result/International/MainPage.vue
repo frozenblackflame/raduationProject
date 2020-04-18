@@ -141,11 +141,11 @@
   }
   .title-style{
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-    font-size: 20px;
+    font-size: 40px;
   }
   .content-style{
-    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-    font-size: 10px;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","宋体",Arial,sans-serif;
+    font-size: 15px;
     position: relative;
     top: 20px;
   }

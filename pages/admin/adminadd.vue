@@ -52,11 +52,12 @@
           data: {
             "usernum": this.form.name,
             "adminname": this.form.desc,
-            "userpassword": this.form.imageUrl
+            "userpassword": this.form.imageUrl,
+
           }
         }).then((res) => {
-          console.log(res.code)
-          this.$router.push("/information/latestResults?id=" + getQueryString("id"))
+          // console.log()
+          history.go(-1)
         })
       },
       returnButton(){

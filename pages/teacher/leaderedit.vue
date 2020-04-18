@@ -70,8 +70,8 @@
           url: `http://localhost:8080/api/leader/updateLeader`,
           data: {
             "id": getQueryString("id"),
-            "leader_introduce": this.form.name,
-            "leaderName": this.form.desc,
+            "leader_introduce": this.form.desc,
+            "leaderName": this.form.name,
             "leaderImg": this.form.imageUrl
           }
         }).then((res) => {

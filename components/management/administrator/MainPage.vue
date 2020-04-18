@@ -28,7 +28,7 @@
     </el-container>
     <el-button class="new-button" label="操作" align="center" v-if="showButton"
                :style="{color:'#198ce9','cursor':'pointer'}"
-               type="primary" @click="toAddPage(scope.row)"
+               type="primary" @click="toAddPage"
     ><span style="color: black">新增</span></el-button>
   </div>
 

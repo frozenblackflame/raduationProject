@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <el-form ref="form" :model="form" label-width="80px">
+    <el-form ref="form" :model="form" label-width="80px" >
       <el-form-item label="文章标题">
         <el-input v-model="form.name"></el-input>
       </el-form-item>
@@ -57,11 +57,11 @@
           }
         }).then((res) => {
           console.log(res.code)
-          this.$router.push("/information/latestResults/list");
+          this.$router.push("/information/technologicalAchievements/list");
         })
       },
       goback(){
-        this.$router.push("/information/latestResults/list");
+        this.$router.push("/information/technologicalAchievements/list");
       }
     }
   }

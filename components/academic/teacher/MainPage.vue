@@ -1,37 +1,31 @@
 <template>
   <center>
-    <div style="width: 80%;">
+    <div>
       <el-container>
         <el-header height>
           <Header></Header>
         </el-header>
-        <el-container>
-          <!--          <el-aside width="200px">-->
-          <!--            <Aside></Aside>-->
-          <!--          </el-aside>-->
-          <!--          <el-main>-->
-          <!--            <Main></Main>-->
-          <!--          </el-main>-->
-        </el-container>
       </el-container>
-      <el-table :data="listDate" style="padding-left: 0px;margin-top: -20px" stripe>
+      <label style="margin-left: 700px">教师名称：</label><el-input style="width: 15%;" v-model="teachername"></el-input>
+      <el-button type="primary" @click="getData">搜索</el-button>
+      <el-table :data="listDate" style="margin-top: 20px" stripe>
 
-        <el-table-column prop="teachername" width="200px"  label="教师名称" show-overflow-tooltip>
+        <el-table-column prop="teachername"   label="教师名称"  align="center" show-overflow-tooltip>
         </el-table-column>
-        <el-table-column prop="teacherintroduce" width="200px" label="教师介绍" show-overflow-tooltip>
+        <el-table-column prop="teacherintroduce"label="教师介绍"  align="center">
         </el-table-column>
         <!--        <el-table-column prop="image" label="图片" min-width="20%" >-->
         <!--        </el-table-column>-->
-        <el-table-column prop="teacherimg" width="150px" label="照片" show-overflow-tooltip>
+        <el-table-column prop="teacherimg"" label="照片"   align="center" show-overflow-tooltip>
           <!-- 图片的显示 -->
-          <template   slot-scope="scope">
-            <img :src="scope.row.teacherimg"  min-width="70" height="70" />
-          </template>
+          <div   slot-scope="scope" style="text-align: center">
+            <img :src="scope.row.teacherimg"  min-width="100" height="100" />
+          </div>
         </el-table-column>
 
         <!--        <el-table-column  label="操作" show-overflow-tooltip>-->
         <!--        </el-table-column>-->
-        <el-table-column label="操作" show-overflow-tooltip>
+        <el-table-column label="操作"  align="center" show-overflow-tooltip>
           <template slot-scope="scope" >
             <el-button class="new-button" label="操作" align="center" v-if="showButton"
                        :style="{color:'#198ce9','cursor':'pointer'}"
@@ -55,7 +49,15 @@
                  :style="{color:'#198ce9','cursor':'pointer'}"
                  type="primary" @click="toAddPage()"
       ><span style="color: black">新增</span></el-button>
-    </div>
+      <el-pagination
+        background
+        layout="prev, pager, next"
+        :total="total"
+        @current-change="handleCurrentChange"
+        :current-page.sync="currentPage1"
+        :page-size="7"
+      >
+      </el-pagination>
     </div>
   </center>
 </template>
@@ -66,6 +68,7 @@
   export default {
     data() {
       return {
+        currentPage1:1,
         listDate: [{ title: "习近平总书记前往甘肃考察，为何要来这所学校？", time: "2019-5-2" ,url:"./"}],
         id: "",
         showButton: false,
@@ -80,6 +83,9 @@
           resource: '',
           desc: ''
         },
+        teachername:"",
+        page: 1,
+        total:0
       };
     },
     methods: {
@@ -92,11 +98,14 @@
           method: 'post',
           url: `http://localhost:8080/api/teacher/getAllTeacher`,
           data:{
-            "id": id
+            "id": id,
+            "teachername": this.teachername,
+            "page": this.page
           }
         })
         // alert(data.extend.results[0].id)
-        this.listDate = data.extend.results
+        this.listDate = data.extend.results.list
+        this.total = data.extend.results.pages
         if (localStorage.getItem("role") === "admin") {
           this.showButton = true;
         } else {
@@ -142,6 +151,10 @@
         })
         this.dialogFormVisible = false
         this.$router.go(0);
+      },
+      handleCurrentChange(val){
+        this.page = val;
+        console.log(val)
       }
 
     },
@@ -165,6 +178,9 @@
 </script>
 
 <style>
+  body{
+    background: #062d68 url(http://www.qnlm.ac/common/css/web/v3/../../../img/web/v3/bg_conlong2.jpg?1106) no-repeat center -450px/100%;
+  }
   .el-aside {
     padding-left: 20px;
   }

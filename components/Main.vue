@@ -4,11 +4,15 @@
     <!--    <button  @click='login' class="button button-caution">点我</button>-->
 <!--    <h1>{{ msg }}</h1>-->
     <el-carousel trigger="hover" type="card">
-      <el-carousel-item v-for="item in indexList" :key="item.title">
+      <el-carousel-item v-for="(item,index) in indexList" :key="index">
         <nuxt-link :to="item.url">
           <div class="a"></div>
-          <div class="title">{{ item.title }}</div>
-          <img :src="item.imgUrl" class="header-img">
+
+          <div>
+            <div class="title" v-show="seen&&index==current"  >{{ item.title }}</div>
+            <img :src="item.imgUrl" class="header-img" @mouseenter="enter(index)" @mouseleave="leave()">
+          </div>
+
         </nuxt-link>
       </el-carousel-item>
     </el-carousel>
@@ -73,6 +77,8 @@
   export default {
     data(){
       return{
+        seen:false,
+        current:0,
         msg : "Hello world",
         indexList: "",
         results: "",
@@ -94,6 +100,16 @@
         this.results1 = data.extend.maps.resultList1
         this.anno = data.extend.maps.anno
         this.news = data.extend.maps.news
+      },
+      enter(index){
+        console.log("鼠标移入")
+        this.seen = true;
+        this.current = index;
+      },
+      leave(e){
+        console.log("鼠标移出")
+        this.seen = false;
+        this.current = null;
       }
     },
     created () {
@@ -161,6 +177,9 @@
 </script>
 
 <style>
+  body{
+    background: #062d68 url(http://www.qnlm.ac/common/css/web/v3/../../../img/web/v3/bg_conlong2.jpg?1106) no-repeat center -450px/100%;
+  }
   .a1 {
     position: absolute;
     top: 245px;
@@ -244,7 +263,7 @@
     padding-bottom: 0px;
   }
   .header-img{
-    width: 300px;
+    width: 80%;
     height: 300px;
   }
 </style>

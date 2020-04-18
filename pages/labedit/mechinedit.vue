@@ -96,3 +96,11 @@
     }
   }
 </script>
+<style>
+  .el-form-item__label{
+    color: black;
+  }
+  .el-textarea__inner{
+    height: 500px;
+  }
+</style>

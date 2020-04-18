@@ -11,7 +11,7 @@
             <h1 class="title-style">行政机构介绍</h1>
             <el-divider></el-divider>
             <h4 class="content-style">{{content}}</h4>
-            <h4 class="time-style"><span>发表时间：</span>{{createTime}}</h4>
+<!--            <h4 class="time-style"><span>发表时间：</span>{{createTime}}</h4>-->
             <!--            <el-divider></el-divider>-->
             <!--            <h3>{{image}}</h3>-->
             <!--            <img :src="image" class="image" />-->
@@ -141,13 +141,14 @@
   }
   .title-style{
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-    font-size: 20px;
+    font-size: 40px;
   }
   .content-style{
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-    font-size: 10px;
+    font-size: 15px;
     position: relative;
     top: 20px;
+    text-align: left;
   }
   .time-style{
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
