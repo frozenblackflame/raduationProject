@@ -5,17 +5,17 @@
     <el-table-column prop="adminname" label="用户姓名"></el-table-column>
     <el-table-column prop="usernum" label="用户账号"></el-table-column>
 <!--    <el-table-column prop="createTime" label="日期" :formatter="dateFormat" align="center" show-overflow-tooltip></el-table-column>-->
-    <el-table-column label="操作" show-overflow-tooltip>
+    <el-table-column label="操作" show-overflow-tooltip v-if="showButton">
       <template slot-scope="scope" >
         <el-button class="new-button" label="操作" align="center" v-if="showButton"
                    :style="{color:'#198ce9','cursor':'pointer'}"
                    type="primary" @click="toPage(scope.row)"
         ><span style="color: black">编辑</span></el-button>
 
-        <el-button class="new-button"  label="操作" align="center" v-if="showButton"
-                   :style="{color:'#198ce9','cursor':'pointer'}"
-                   type="primary" @click="dialogFormVisible = true"
-        ><span style="color: black">删除</span></el-button>
+<!--        <el-button class="new-button"  label="操作" align="center" v-if="showButton"-->
+<!--                   :style="{color:'#198ce9','cursor':'pointer'}"-->
+<!--                   type="primary" @click="dialogFormVisible = true"-->
+<!--        ><span style="color: black">删除</span></el-button>-->
         <el-dialog title="是否确认删除" :visible.sync="dialogFormVisible"  @closed="handleClose">
           <div slot="footer" class="dialog-footer">
             <el-button @click="dialogFormVisible = false">取 消</el-button>
@@ -26,10 +26,10 @@
     </el-table-column>
   </el-table>
     </el-container>
-    <el-button class="new-button" label="操作" align="center" v-if="showButton"
-               :style="{color:'#198ce9','cursor':'pointer'}"
-               type="primary" @click="toAddPage"
-    ><span style="color: black">新增</span></el-button>
+<!--    <el-button class="new-button" label="操作" align="center" v-if="showButton"-->
+<!--               :style="{color:'#198ce9','cursor':'pointer'}"-->
+<!--               type="primary" @click="toAddPage"-->
+<!--    ><span style="color: black">新增</span></el-button>-->
   </div>
 
 </template>

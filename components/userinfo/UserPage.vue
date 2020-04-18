@@ -9,14 +9,14 @@
       <el-table-column prop="role" label="用户角色"></el-table-column>
       <el-table-column prop="adminname" label="用户账号"></el-table-column>
       <!--    <el-table-column prop="createTime" label="日期" :formatter="dateFormat" align="center" show-overflow-tooltip></el-table-column>-->
-      <el-table-column label="操作" show-overflow-tooltip>
-        <template slot-scope="scope" >
-          <el-button class="new-button" label="操作" align="center"
-                     :style="{color:'#198ce9','cursor':'pointer'}"
-                     type="primary" @click="toPage(scope.row)"
-          ><span style="color: black">编辑</span></el-button>
-        </template>
-      </el-table-column>
+<!--      <el-table-column label="操作" show-overflow-tooltip>-->
+<!--        <template slot-scope="scope" >-->
+<!--          <el-button class="new-button" label="操作" align="center"-->
+<!--                     :style="{color:'#198ce9','cursor':'pointer'}"-->
+<!--                     type="primary" @click="toPage(scope.row)"-->
+<!--          ><span style="color: black">编辑</span></el-button>-->
+<!--        </template>-->
+<!--      </el-table-column>-->
     </el-table>
   </div>
 </template>

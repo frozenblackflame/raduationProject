@@ -7,7 +7,7 @@
     <el-table-column prop="reultName" label="科技名称"></el-table-column>
     <el-table-column prop="resultDesc" label="科技详情"></el-table-column>
     <el-table-column prop="createTime" label="日期" :formatter="dateFormat" align="center" show-overflow-tooltip></el-table-column>
-    <el-table-column label="操作" show-overflow-tooltip>
+    <el-table-column label="操作" show-overflow-tooltip v-if="showButton">
       <template slot-scope="scope" >
         <div>
           <el-button label="操作" align="center" v-if="showButton"
