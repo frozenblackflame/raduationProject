@@ -3,7 +3,7 @@
 
     <el-form ref="form" :model="form" label-width="80px">
       <el-form-item label="文章内容" style="color: black">
-        <el-input type="textarea" v-model="form.desc" id="content"></el-input>
+        <el-input type="textarea" :autosize="{ minRows: 20, maxRows: 100}" v-model="form.desc" id="content"></el-input>
       </el-form-item>
 <!--      <el-form-item label="图片路径">-->
 <!--        <el-input v-model="form.imageUrl"></el-input>-->
@@ -100,8 +100,5 @@
 <style>
   .el-form-item__label{
     color: black;
-  }
-  .el-textarea__inner{
-    height: 500px;
   }
 </style>

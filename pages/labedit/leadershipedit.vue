@@ -3,7 +3,7 @@
 
     <el-form ref="form" :model="form" label-width="80px">
       <el-form-item label="领导介绍">
-        <el-input type="textarea" v-model="form.desc" id="content"></el-input>
+        <el-input type="textarea" :autosize="{ minRows: 20, maxRows: 100}" v-model="form.desc" id="content"></el-input>
       </el-form-item>
 <!--      <el-form-item label="图片路径">-->
 <!--        <el-input v-model="form.imageUrl" id="img"></el-input>-->
@@ -100,7 +100,5 @@
   .el-form-item__label{
     color: black;
   }
-  .el-textarea__inner{
-    height: 500px;
-  }
+
 </style>

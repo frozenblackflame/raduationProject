@@ -4,7 +4,7 @@
     <el-form ref="form" :model="form" label-width="80px">
       <div style="height: 50px"></div>
       <el-form-item label="规定">
-        <el-input type="textarea" v-model="form.desc" id="content"></el-input>
+        <el-input type="textarea" :autosize="{ minRows: 20, maxRows: 100}"  v-model="form.desc" id="content"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="editResults">立即修改</el-button>
@@ -93,3 +93,9 @@
     }
   }
 </script>
+<style>
+  .el-form-item__label{
+    color: black;
+  }
+</style>
+
