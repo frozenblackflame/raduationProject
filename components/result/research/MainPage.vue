@@ -1,11 +1,11 @@
 <template>
   <div>
-    <label style="margin-left: 700px">科技名称：</label><el-input style="width: 15%;" v-model="kejiname"></el-input>
+    <label style="margin-left: 700px">科研名称：</label><el-input style="width: 15%;" v-model="kejiname"></el-input>
     <el-button type="primary" @click="getData">搜索</el-button>
     <el-container>
   <el-table :data="listDate" border stripe style="margin-top: 20px">
-    <el-table-column prop="reultName" label="科技名称"></el-table-column>
-    <el-table-column prop="resultDesc" label="科技详情"></el-table-column>
+    <el-table-column prop="reultName" label="科研名称"></el-table-column>
+    <el-table-column prop="resultDesc" label="科研详情"></el-table-column>
     <el-table-column prop="createTime" label="日期" :formatter="dateFormat" align="center" show-overflow-tooltip></el-table-column>
     <el-table-column label="操作" show-overflow-tooltip v-if="showButton">
       <template slot-scope="scope" >

@@ -1,5 +1,8 @@
 <template>
   <center id="poster">
+    <el-header height class="heard">
+      <Header></Header>
+    </el-header>
     <div style="width: 80%;margin-top: 20px;background-color:#F5F5F5">
       <el-scrollbar wrap-class="list" view-style="font-weight: bold;" view-class="view-box" :native="false">
       <el-container>
@@ -60,8 +63,12 @@
   import axios from "axios";
   import html2Canvas from 'html2canvas'
   import JsPDF from 'jspdf'
+  import Header from "~/components/Header";
 
   export default {
+    components: {
+      Header
+    },
     data() {
       return {
         // image: require("../../../static/shiyanshi.png")
@@ -221,6 +228,7 @@
     position: relative;
     top: 30px;
     margin-top: 30px;
+    padding-bottom: 250px;
   }
   .opertion-button1{
     width: 60px;
@@ -290,5 +298,8 @@
   /*}*/
   .list {
     max-height: 1000px;
+  }
+  .heard{
+    width: 82%;
   }
 </style>

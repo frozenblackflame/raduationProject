@@ -1,6 +1,6 @@
 <template>
   <center>
-    <div style="width: 80%;height:100%">
+    <div style="width: 80%;height:100%;background-color: #F5F5F5;">
       <el-container>
 <!--        <el-header height>-->
 <!--          <el-page-header @back="goBack" content="详情页面"></el-page-header>-->

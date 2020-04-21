@@ -6,7 +6,7 @@
         <!--          <el-page-header @back="goBack" content="详情页面"></el-page-header>-->
         <!--        </el-header>-->
         <!--        <el-divider></el-divider>-->
-        <el-main style="width: 80%;height: 800px">
+        <el-main style="width: 80%;height: 800px;background-color: #F5F5F5;">
           <div class="imagepage">
             <h1 class="title-style">行政机构介绍</h1>
             <el-divider></el-divider>

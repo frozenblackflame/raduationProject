@@ -1,5 +1,8 @@
 <template>
   <center>
+    <el-header height class="heard">
+      <Header></Header>
+    </el-header>
     <div style="width: 80%;margin-top: 20px;background-color: #cac6c6">
       <el-container>
         <el-header height>
@@ -57,8 +60,12 @@
 <script>
 import axios from "axios";
 import fecha from "fecha";
+import Header from "~/components/Header";
 
 export default {
+  components: {
+    Header
+  },
   data() {
     return {
       listDate: [{ title: "习近平总书记前往甘肃考察，为何要来这所学校？", time: "2019-5-2" ,url:"./"}],
@@ -174,5 +181,8 @@ function getQueryString(name){
   }
   .el-page-header__left::after {
     height: 20px;
+  }
+  .heard{
+    width: 82%;
   }
 </style>
