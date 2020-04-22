@@ -6,9 +6,13 @@
           <Header></Header>
         </el-header>
       </el-container>
+      <el-button class="new-button" label="操作" align="center" v-if="showButton"
+                 :style="{color:'#198ce9','cursor':'pointer'}"
+                 type="primary" @click="toAddPage()"
+      ><span style="color: black">新增</span></el-button>
       <label style="margin-left: 700px">教师名称：</label><el-input style="width: 15%;" v-model="teachername"></el-input>
       <el-button type="primary" @click="getData">搜索</el-button>
-      <el-table :data="listDate" style="margin-top: 20px" stripe>
+      <el-table :data="listDate" style="margin-top: 20px;overflow: auto;max-height: 600px;" stripe>
 
         <el-table-column prop="teachername"   label="教师名称"  align="center" show-overflow-tooltip>
         </el-table-column>
@@ -16,7 +20,7 @@
         </el-table-column>
         <!--        <el-table-column prop="image" label="图片" min-width="20%" >-->
         <!--        </el-table-column>-->
-        <el-table-column prop="teacherimg"" label="照片"   align="center" show-overflow-tooltip>
+        <el-table-column prop="teacherimg" label="照片"   align="center" show-overflow-tooltip>
           <!-- 图片的显示 -->
           <div   slot-scope="scope" style="text-align: center">
             <img :src="scope.row.teacherimg"  min-width="100" height="100" />
@@ -45,10 +49,7 @@
           </template>
         </el-table-column>
       </el-table>
-      <el-button class="new-button" label="操作" align="center" v-if="showButton"
-                 :style="{color:'#198ce9','cursor':'pointer'}"
-                 type="primary" @click="toAddPage()"
-      ><span style="color: black">新增</span></el-button>
+
       <el-pagination
         background
         layout="prev, pager, next"

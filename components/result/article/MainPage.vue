@@ -1,9 +1,13 @@
 <template>
   <div>
+    <el-button class="new-button" label="操作" align="center" v-if="showButton"
+               :style="{color:'#198ce9','cursor':'pointer'}"
+               type="primary" @click="toAddPage"
+    ><span style="color: black">新增</span></el-button>
     <label style="margin-left: 700px">文章名称：</label><el-input style="width: 15%;" v-model="articlename"></el-input>
     <el-button type="primary" @click="getData">搜索</el-button>
     <el-container>
-  <el-table :data="listDate" border stripe style="margin-top: 10px;font-size:15px">
+  <el-table :data="listDate" border stripe style="pxoverflow: auto;max-height: 650px;margin-top: 20px;">
     <el-table-column prop="title" label="文章标题"></el-table-column>
     <el-table-column prop="desc" label="文章详情"></el-table-column>
     <el-table-column prop="createTime" label="日期" :formatter="dateFormat" align="center" show-overflow-tooltip></el-table-column>
@@ -28,10 +32,7 @@
     </el-table-column>
   </el-table>
     </el-container>
-  <el-button class="new-button" label="操作" align="center" v-if="showButton"
-             :style="{color:'#198ce9','cursor':'pointer'}"
-             type="primary" @click="toAddPage"
-  ><span style="color: black">新增</span></el-button>
+
     <el-pagination
       background
       layout="prev, pager, next"

@@ -44,4 +44,5 @@ export default {
   background-size: cover;
   position: fixed;
 }
+
 </style>

@@ -14,9 +14,13 @@
 <!--&lt;!&ndash;            <Main></Main>&ndash;&gt;-->
 <!--&lt;!&ndash;          </el-main>&ndash;&gt;-->
 <!--        </el-container>-->
+      <el-button class="new-button" label="操作" align="center" v-if="showButton"
+                 :style="{color:'#198ce9','cursor':'pointer'}"
+                 type="primary" @click="toAddPage()"
+      ><span style="color: black">新增</span></el-button>
       <label style="margin-left: 700px">带头人名称：</label><el-input style="width: 15%;" v-model="leadername"></el-input>
       <el-button type="primary" @click="getData">搜索</el-button>
-      <el-table :data="listDate" style="margin-top: 20px"  stripe>
+      <el-table :data="listDate" style="margin-top: 20px; pxoverflow: auto;max-height: 600px;"  stripe>
 
         <el-table-column prop="leadername"   label="教师名称"  align="center" show-overflow-tooltip>
         </el-table-column>
@@ -53,10 +57,7 @@
           </template>
         </el-table-column>
       </el-table>
-      <el-button class="new-button" label="操作" align="center" v-if="showButton"
-                 :style="{color:'#198ce9','cursor':'pointer'}"
-                 type="primary" @click="toAddPage()"
-      ><span style="color: black">新增</span></el-button>
+
       <el-pagination
         background
         layout="prev, pager, next"
