@@ -13,7 +13,7 @@
         <el-input v-model="form.imageUrl"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="editResults">立即修改</el-button>
+        <el-button type="primary" @click="editResults">立即添加</el-button>
         <el-button  @click="goBack">取消</el-button>
       </el-form-item>
     </el-form>

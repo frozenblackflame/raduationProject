@@ -20,7 +20,7 @@
           ><span style="color: black">编辑</span></el-button>
           <el-button type="primary" v-if="showButton"  @click="dialogFormVisible = true"><span style="color: black">删除</span></el-button>
         </div>
-        <el-dialog title="是否删除" :visible.sync="dialogFormVisible"  @closed="handleClose">
+        <el-dialog title="是否删除" :visible.sync="dialogFormVisible" :append-to-body="true" @closed="handleClose">
           <el-form :model="form" :rules="rules" ref="ruleForm">
           </el-form>
           <div slot="footer" class="dialog-footer">

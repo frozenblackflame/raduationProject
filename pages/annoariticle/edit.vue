@@ -6,7 +6,7 @@
         <el-input v-model="form.name" id="name"></el-input>
       </el-form-item>
       <el-form-item label="公告内容">
-        <el-input type="textarea" v-model="form.desc" id="contents" value="12346"></el-input>
+        <el-input type="textarea" :autosize="{ minRows: 20, maxRows: 100}"  v-model="form.desc" id="contents" value="12346"></el-input>
       </el-form-item>
       <el-form-item label="图片路径">
         <el-input v-model="form.imageUrl" id="img"></el-input>
@@ -98,3 +98,9 @@
     }
   }
 </script>
+<style>
+  .el-form-item__label{
+    color: black;
+  }
+</style>
+

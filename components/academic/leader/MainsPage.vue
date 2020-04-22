@@ -48,7 +48,7 @@
                        :style="{color:'#198ce9','cursor':'pointer'}"
                        type="primary" @click="dialogFormVisible = true"
             ><span style="color: black">删除</span></el-button>
-            <el-dialog title="是否确认删除" :visible.sync="dialogFormVisible"  @closed="handleClose">
+            <el-dialog title="是否确认删除" :visible.sync="dialogFormVisible" :append-to-body="true" @closed="handleClose">
               <div slot="footer" class="dialog-footer">
                 <el-button @click="dialogFormVisible = false">取 消</el-button>
                 <el-button type="primary" @click="handleSave(scope.row)">确 定</el-button>
@@ -115,7 +115,7 @@
         })
         // alert(data.extend.results[0].id)
         this.listDate = data.extend.results.list
-        this.total = data.extend.results.pages
+        this.total = data.extend.results.total
         if (localStorage.getItem("role") === "admin") {
           this.showButton = true;
         } else {
@@ -161,6 +161,7 @@
       },
       handleCurrentChange(val){
         this.page = val
+        this.getData()
       }
     },
     created () {

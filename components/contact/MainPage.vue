@@ -19,7 +19,7 @@
                    :style="{color:'#198ce9','cursor':'pointer'}"
                    type="primary" @click="dialogFormVisible = true"
         ><span style="color: black">删除</span></el-button>
-        <el-dialog title="是否确认删除" :visible.sync="dialogFormVisible"  @closed="handleClose">
+        <el-dialog title="是否确认删除" :visible.sync="dialogFormVisible" :append-to-body="true" @closed="handleClose">
           <div slot="footer" class="dialog-footer">
             <el-button @click="dialogFormVisible = false">取 消</el-button>
             <el-button type="primary" @click="handleSave(scope.row)">确 定</el-button>
