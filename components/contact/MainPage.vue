@@ -8,7 +8,7 @@
     <el-table-column prop="telephone" label="联系方式"></el-table-column>
     <el-table-column prop="dept" label="部门"></el-table-column>
     <!--    <el-table-column prop="createTime" label="日期" :formatter="dateFormat" align="center" show-overflow-tooltip></el-table-column>-->
-    <el-table-column label="操作" show-overflow-tooltip>
+    <el-table-column label="操作" v-if="showButton" show-overflow-tooltip>
       <template slot-scope="scope" >
         <el-button class="new-button" label="操作" align="center" v-if="showButton"
                    :style="{color:'#198ce9','cursor':'pointer'}"
@@ -136,4 +136,7 @@
   }
 </script>
 <style>
+  body{
+    background: #062d68 url(http://www.qnlm.ac/common/css/web/v3/../../../img/web/v3/bg_conlong2.jpg?1106) no-repeat center -450px/100%;
+  }
 </style>

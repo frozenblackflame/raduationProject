@@ -101,3 +101,8 @@
     }
   }
 </script>
+<style>
+  body{
+    background: #062d68 url(http://www.qnlm.ac/common/css/web/v3/../../../img/web/v3/bg_conlong2.jpg?1106) no-repeat center -450px/100%;
+  }
+</style>
