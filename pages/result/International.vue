@@ -1,5 +1,6 @@
 <template>
   <center id="poster">
+    <el-scrollbar wrap-class="list" view-style="font-weight: bold;" view-class="view-box" :native="false" >
     <div style="width: 80%;">
       <el-container>
         <el-header height>
@@ -10,11 +11,14 @@
             <Aside></Aside>
           </el-aside>
           <el-main>
+
             <Main></Main>
+
           </el-main>
         </el-container>
       </el-container>
     </div>
+    </el-scrollbar>
   </center>
 </template>
 
@@ -42,6 +46,6 @@ export default {
   height: 100%;
   width: 100%;
   background-size: cover;
-  position: fixed;
+  /*position: fixed;*/
 }
 </style>

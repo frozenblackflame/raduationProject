@@ -215,7 +215,7 @@
     position: relative;
     top: 30px;
     margin-top: 30px;
-    padding-bottom: 250px;
+    /*padding-bottom: 250px;*/
   }
   .opertion-button1{
     width: 60px;
@@ -278,7 +278,7 @@
     height: 100%;
     width: 100%;
     background-size: cover;
-    position: fixed;
+    /*position: fixed;*/
   }
   .list {
     max-height: 1000px;

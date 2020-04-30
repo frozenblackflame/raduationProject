@@ -40,7 +40,7 @@
 
 
               <div>
-                <el-dialog title="是否确认删除" :visible.sync="dialogVisible"  @closed="handleClose" :modal-append-to-body='false'>
+                <el-dialog title="是否确认删除" :visible.sync="dialogFormVisible"  @closed="handleClose" :modal-append-to-body='false'>
                   <div slot="footer" class="dialog-footer">
                     <el-button @click="dialogFormVisible = false">取 消</el-button>
                     <el-button type="primary" @click="handleSave">确 定</el-button>
@@ -227,7 +227,7 @@
     position: relative;
     top: 30px;
     margin-top: 30px;
-    padding-bottom: 250px;
+    /*padding-bottom: 50px;*/
   }
   .opertion-button1{
     width: 60px;
@@ -290,7 +290,7 @@
     height: 100%;
     width: 100%;
     background-size: cover;
-    position: fixed;
+    /*position: fixed;*/
   }
   .list {
     max-height: 1000px;

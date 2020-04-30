@@ -148,6 +148,7 @@
     font-size: 15px;
     position: relative;
     top: 20px;
+    text-align: left;
     white-space:pre-wrap;
   }
   .time-style{
