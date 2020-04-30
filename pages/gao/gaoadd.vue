@@ -80,12 +80,15 @@
       },
       onSuccess(response, file, fileList) {
         this.form.pdfUrl = response;
-        console.log(this.form.pdfUrl)
-        this.$message.success("文件上传成功。");
+        if (this.form.pdfUrl.endsWith(".pdf")){
+          this.$message.success("文件上传成功。");
+        }else{
+          this.$message.error("请上传以.pdf结尾的文件。");
+        }
         this.onUpald();
       },
       onError(err, file, fileList){
-        this.$message.error("文件上传失败。");
+        this.$message.error("网络错误，文件上传失败。");
         this.onUpald();
       },
       onProgress(event, file, fileList){
