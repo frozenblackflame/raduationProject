@@ -29,21 +29,7 @@
                 </el-button>
 
                 <el-button style="margin-right: 10px"  type="primary" v-if="showButton"  @click="dialogFormVisible = true"><span style="color: black;">删除</span></el-button>
-                <el-upload
-                  :multiple="false"
-                  style=" display: inline-block;"
-                  :limit="1"
-                  accept=".pdf"
-                  action="https://jsonplaceholder.typicode.com/posts/"
-                  :show-file-list="false"
-                  :file-list="fileList"
-                  :on-success="onSuccess"
-                  :on-error="onError"
-                  :on-progress="onProgress"
-                  :on-exceed="onExceed"
-                >
-                  <el-button type="primary"  v-if="showButton" ><span style="color: black;">上传</span></el-button>
-                </el-upload>
+
               </el-row>
             </div>
             <el-dialog title="是否删除" :visible.sync="dialogFormVisible" :append-to-body="true" @closed="handleClose">
@@ -106,9 +92,6 @@
         })
         // alert(data.extend.results[0].id)
         this.listDate = data.extend.results.list
-        console.log("-----------------------");
-        console.log(this.listDate);
-        console.log("-----------------------");
         this.total = data.extend.results.total
         if (localStorage.getItem("role") === "admin") {
           this.showButton = true;
@@ -116,24 +99,8 @@
           this.showButton = false;
         }
       },
-      onSuccess(response,file,fileList){
-        this.$message.success("文件上传成功。");
-        this.onUpald();
-      },
-      onError(err, file, fileList){
-        this.$message.error("文件上传失败。");
-        this.onUpald();
-      },
-      onProgress(event, file, fileList){
-        this.$message("文件上传中，请稍后。");
-      },
-      onExceed(files, fileList){
-        this.$message.warning("文件最多只能上传一个。")
-      },
-      onUpald(){
-        // this.$refs.upload.clearFiles();
-        this.fileList=[];
-      },
+
+
       goBack() {
         this.$router.go(-1);
       },
