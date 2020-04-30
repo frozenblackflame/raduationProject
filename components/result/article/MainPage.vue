@@ -3,7 +3,8 @@
     <el-button class="new-button" label="操作" align="center" v-if="showButton"
                :style="{color:'#198ce9','cursor':'pointer'}"
                type="primary" @click="toAddPage"
-    ><span style="color: black">新增</span></el-button>
+    >
+      <span style="color: black">新增</span></el-button>
     <label style="margin-left: 700px">文章名称：</label><el-input style="width: 15%;" v-model="articlename"></el-input>
     <el-button type="primary" @click="getData">搜索</el-button>
     <el-container>
@@ -14,11 +15,28 @@
     <el-table-column label="操作" show-overflow-tooltip v-if="showButton">
       <template slot-scope="scope" >
         <div>
+          <el-row>
           <el-button  label="操作" align="center" v-if="showButton"
                      :style="{color:'#198ce9','cursor':'pointer'}"
                      type="primary" @click="toPage(scope.row)"
-          ><span style="color: black">编辑</span></el-button>
-          <el-button type="primary" v-if="showButton"  @click="dialogFormVisible = true"><span style="color: black">删除</span></el-button>
+          >
+            <span style="color: black">编辑</span>
+
+          </el-button>
+
+          <el-button  type="primary" v-if="showButton"  @click="dialogFormVisible = true"><span style="color: black;margin-right: 10px;width: 70px">删除</span></el-button>
+            <el-upload
+              multiple="false"
+              style=" display: inline-block;"
+              show-file-list="false"
+              accept=".pdf"
+              class="upload-demo"
+              action="*"
+              :on-change="handleChange"
+              :file-list="fileList">
+              <el-button type="primary"  v-if="showButton" ><span style="color: black">上传</span></el-button>
+            </el-upload>
+          </el-row>
         </div>
         <el-dialog title="是否删除" :visible.sync="dialogFormVisible" :append-to-body="true" @closed="handleClose">
           <el-form :model="form" :rules="rules" ref="ruleForm">
