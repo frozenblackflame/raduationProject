@@ -9,7 +9,11 @@
     <el-button type="primary" @click="getData">搜索</el-button>
     <el-container>
       <el-table :data="listDate" border stripe style="pxoverflow: auto;max-height: 650px;margin-top: 20px;">
-        <el-table-column prop="title" label="论文标题"></el-table-column>
+        <el-table-column label="论文标题">
+          <template slot-scope="scope">
+            <a href="/" target="_blank" class="buttonText">{{scope.row.title}}</a>
+          </template>
+        </el-table-column>
         <el-table-column prop="desc" label="论文详情"></el-table-column>
         <el-table-column prop="createTime" label="发表日期" :formatter="dateFormat" align="center" show-overflow-tooltip></el-table-column>
         <el-table-column label="操作" show-overflow-tooltip v-if="showButton">
@@ -102,6 +106,9 @@
         })
         // alert(data.extend.results[0].id)
         this.listDate = data.extend.results.list
+        console.log("-----------------------");
+        console.log(this.listDate);
+        console.log("-----------------------");
         this.total = data.extend.results.total
         if (localStorage.getItem("role") === "admin") {
           this.showButton = true;
