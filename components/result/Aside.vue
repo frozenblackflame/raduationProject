@@ -1,6 +1,6 @@
 <template>
   <div class="menu_left">
-
+<el-scrollbar>
     <el-menu
       :default-active="this.$route.path"
       router
@@ -27,7 +27,7 @@
         <span slot="title">{{menu.menu}}</span>
       </el-menu-item>
     </el-menu>
-
+</el-scrollbar>
   </div>
 </template>
 
