@@ -16,7 +16,7 @@
         </el-table-column>
         <el-table-column prop="desc" label="论文详情"></el-table-column>
         <el-table-column prop="createTime" label="发表日期" :formatter="dateFormat" align="center" show-overflow-tooltip></el-table-column>
-        <el-table-column label="操作" show-overflow-tooltip v-if="showButton">
+        <el-table-column label="操作" show-overflow-tooltip >
           <template slot-scope="scope" >
             <div>
               <el-row>
@@ -29,7 +29,9 @@
                 </el-button>
 
                 <el-button style="margin-right: 10px"  type="primary" v-if="showButton"  @click="dialogFormVisible = true"><span style="color: black;">删除</span></el-button>
-
+                <el-button type="primary">
+                  <a v-bind:href="['http://localhost:8080/api/gaoshuiping/download?pdfUrl=' + scope.row.pdfUrl]" >下载文件</a>
+                </el-button>
               </el-row>
             </div>
             <el-dialog title="是否删除" :visible.sync="dialogFormVisible" :append-to-body="true" @closed="handleClose">
