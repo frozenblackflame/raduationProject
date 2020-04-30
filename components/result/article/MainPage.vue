@@ -8,47 +8,51 @@
     <label style="margin-left: 700px">文章名称：</label><el-input style="width: 15%;" v-model="articlename"></el-input>
     <el-button type="primary" @click="getData">搜索</el-button>
     <el-container>
-  <el-table :data="listDate" border stripe style="pxoverflow: auto;max-height: 650px;margin-top: 20px;">
-    <el-table-column prop="title" label="论文标题"></el-table-column>
-    <el-table-column prop="desc" label="论文详情"></el-table-column>
-    <el-table-column prop="createTime" label="发表日期" :formatter="dateFormat" align="center" show-overflow-tooltip></el-table-column>
-    <el-table-column label="操作" show-overflow-tooltip v-if="showButton">
-      <template slot-scope="scope" >
-        <div>
-          <el-row>
-          <el-button  label="操作" align="center" v-if="showButton"
-                     :style="{color:'#198ce9','cursor':'pointer'}"
-                     type="primary" @click="toPage(scope.row)"
-          >
-            <span style="color: black">编辑</span>
+      <el-table :data="listDate" border stripe style="pxoverflow: auto;max-height: 650px;margin-top: 20px;">
+        <el-table-column prop="title" label="论文标题"></el-table-column>
+        <el-table-column prop="desc" label="论文详情"></el-table-column>
+        <el-table-column prop="createTime" label="发表日期" :formatter="dateFormat" align="center" show-overflow-tooltip></el-table-column>
+        <el-table-column label="操作" show-overflow-tooltip v-if="showButton">
+          <template slot-scope="scope" >
+            <div>
+              <el-row>
+                <el-button  label="操作" align="center" v-if="showButton"
+                            :style="{color:'#198ce9','cursor':'pointer'}"
+                            type="primary" @click="toPage(scope.row)"
+                >
+                  <span style="color: black">编辑</span>
 
-          </el-button>
+                </el-button>
 
-          <el-button  type="primary" v-if="showButton"  @click="dialogFormVisible = true"><span style="color: black;margin-right: 10px;width: 70px">删除</span></el-button>
-            <el-upload
-              multiple="false"
-              style=" display: inline-block;"
-              show-file-list="false"
-              accept=".pdf"
-              class="upload-demo"
-              action="*"
-              :on-change="handleChange"
-              :file-list="fileList">
-              <el-button type="primary"  v-if="showButton" ><span style="color: black">上传</span></el-button>
-            </el-upload>
-          </el-row>
-        </div>
-        <el-dialog title="是否删除" :visible.sync="dialogFormVisible" :append-to-body="true" @closed="handleClose">
-          <el-form :model="form" :rules="rules" ref="ruleForm">
-          </el-form>
-          <div slot="footer" class="dialog-footer">
-            <el-button @click="dialogFormVisible = false">取 消</el-button>
-            <el-button type="primary" @click="handleSave(scope.row)">确 定</el-button>
-          </div>
-        </el-dialog>
-      </template>
-    </el-table-column>
-  </el-table>
+                <el-button style="margin-right: 10px"  type="primary" v-if="showButton"  @click="dialogFormVisible = true"><span style="color: black;">删除</span></el-button>
+                <el-upload
+                  :multiple="false"
+                  style=" display: inline-block;"
+                  :limit="1"
+                  accept=".pdf"
+                  action="https://jsonplaceholder.typicode.com/posts/"
+                  :show-file-list="false"
+                  :file-list="fileList"
+                  :on-success="onSuccess"
+                  :on-error="onError"
+                  :on-progress="onProgress"
+                  :on-exceed="onExceed"
+                >
+                  <el-button type="primary"  v-if="showButton" ><span style="color: black;">上传</span></el-button>
+                </el-upload>
+              </el-row>
+            </div>
+            <el-dialog title="是否删除" :visible.sync="dialogFormVisible" :append-to-body="true" @closed="handleClose">
+              <el-form :model="form" :rules="rules" ref="ruleForm">
+              </el-form>
+              <div slot="footer" class="dialog-footer">
+                <el-button @click="dialogFormVisible = false">取 消</el-button>
+                <el-button type="primary" @click="handleSave(scope.row)">确 定</el-button>
+              </div>
+            </el-dialog>
+          </template>
+        </el-table-column>
+      </el-table>
     </el-container>
 
     <el-pagination
@@ -70,7 +74,6 @@
   export default {
     data() {
       return {
-        listDate: [{ title: "习近平总书记前往甘肃考察，为何要来这所学校？", time: "2019-5-2" ,url:"./"}],
         id: "",
         showButton: false,
         dialogFormVisible: false,
@@ -78,6 +81,7 @@
         page:1,
         total:0,
         currentPage1:1,
+        fileList:[],
 
       };
     },
@@ -104,6 +108,24 @@
         } else {
           this.showButton = false;
         }
+      },
+      onSuccess(response,file,fileList){
+        this.$message.success("文件上传成功。");
+        this.onUpald();
+      },
+      onError(err, file, fileList){
+        this.$message.error("文件上传失败。");
+        this.onUpald();
+      },
+      onProgress(event, file, fileList){
+        this.$message("文件上传中，请稍后。");
+      },
+      onExceed(files, fileList){
+        this.$message.warning("文件最多只能上传一个。")
+      },
+      onUpald(){
+        // this.$refs.upload.clearFiles();
+        this.fileList=[];
       },
       goBack() {
         this.$router.go(-1);
