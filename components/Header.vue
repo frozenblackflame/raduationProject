@@ -9,6 +9,7 @@
       @select="handleSelect"
       background-color="#8968CD"
       text-color="#fff"
+      style="border-right: 0;"
       active-text-color="#ffd04b"
     >
       <el-menu-item index="/">首页</el-menu-item>
@@ -25,9 +26,20 @@
       </el-submenu>
       <el-submenu index="4">
         <template slot="title">科技成果</template>
-        <el-menu-item index="/result/research">科研成果</el-menu-item>
+        <el-submenu index="4-1">
+        <template slot="title">科研成果</template>
+          <el-menu-item index="*">科研项目</el-menu-item>
+          <el-menu-item index="*">科研获奖</el-menu-item>
+          <el-menu-item index="*">发明专利</el-menu-item>
+          <el-submenu index="4-1-1">
+            <template slot="title">科研反哺教学</template>
+            <el-menu-item index="*">教改项目</el-menu-item>
+            <el-menu-item index="*">竞赛获奖</el-menu-item>
+            <el-menu-item index="*">教改论文</el-menu-item>
+          </el-submenu>
+        </el-submenu>
         <el-menu-item index="/result/International">国际标准</el-menu-item>
-        <el-menu-item index="/result/article">高水平文章</el-menu-item>
+        <el-menu-item index="/result/article">科研论文</el-menu-item>
       </el-submenu>
       <el-submenu index="5">
         <template slot="title">实验室管理</template>

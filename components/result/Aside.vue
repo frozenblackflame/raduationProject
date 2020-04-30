@@ -1,5 +1,6 @@
 <template>
   <div class="menu_left">
+
     <el-menu
       :default-active="this.$route.path"
       router
@@ -7,12 +8,31 @@
       @select="handleSelect"
       background-color="#8968CD"
       text-color="#fff"
+      style="border-right: 0;"
       active-text-color="#ffd04b"
     >
+      <el-submenu index="1">
+        <template slot="title">科技成果</template>
+        <div class="menu">
+        <el-submenu index="1-1">
+        <template slot="title">科研成果</template>
+          <el-menu-item index="*">科研项目</el-menu-item>
+          <el-menu-item index="*">科研获奖</el-menu-item>
+          <el-menu-item index="*">发明专利</el-menu-item>
+          <el-submenu index="1-1-1">
+            <template slot="title">科研反哺教学</template>
+            <el-menu-item index="*">教改项目</el-menu-item>
+            <el-menu-item index="*">竞赛获奖</el-menu-item>
+            <el-menu-item index="*">教改论文</el-menu-item>
+          </el-submenu>
+        </el-submenu>
+        </div>
+      </el-submenu>
       <el-menu-item v-for="(menu, index) in menus" :key="index" :index="menu.path">
         <span slot="title">{{menu.menu}}</span>
       </el-menu-item>
     </el-menu>
+
   </div>
 </template>
 
@@ -21,9 +41,8 @@ export default {
   data() {
     return {
       menus: [
-        { menu: "科研成果" ,path:"/result/research"},
         { menu: "国际标准" ,path:"/result/International"},
-        { menu: "高水平文章" ,path:"/result/article"}
+        { menu: "科研论文" ,path:"/result/article"}
       ]
     };
   },
@@ -37,4 +56,10 @@ export default {
 </script>
 
 <style>
+  .menu{
+    padding-left: 0px;
+  }
+  .el-menu-item{
+    padding-left: 20px;
+  }
 </style>
