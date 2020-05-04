@@ -19,9 +19,9 @@
 </template>
 
 <script>
-import Header from "../../components/Header";
-import Aside from "../../components/result/Aside";
-import Main from "../../components/result/research/MainPage";
+import Header from "../../../components/Header";
+import Aside from "../../../components/result/Aside";
+import Main from "../../../components/result/research/patent";
 export default {
   components: { Header, Aside, Main }
 };
@@ -42,6 +42,6 @@ export default {
   height: 100%;
   width: 100%;
   background-size: cover;
-  /*position: fixed;*/
+  position: fixed;
 }
 </style>
