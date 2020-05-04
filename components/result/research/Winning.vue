@@ -10,20 +10,20 @@
                  :style="{color:'#198ce9','cursor':'pointer'}"
                  type="primary" @click="toAddPage()"
       ><span style="color: black">新增</span></el-button>
-      <label style="margin-left: 700px">获奖名称：</label><el-input style="width: 15%;" v-model="teachername"></el-input>
+      <label style="margin-left: 700px">获奖名称：</label><el-input style="width: 15%;" v-model="WinningName"></el-input>
       <el-button type="primary" @click="getData">搜索</el-button>
       <el-table :data="listDate" style="margin-top: 20px;overflow: auto;max-height: 600px;" stripe>
 
-        <el-table-column prop="teachername"   label="获奖名称"  align="center" show-overflow-tooltip>
+        <el-table-column prop="winningName"   label="获奖名称"  align="center" show-overflow-tooltip>
         </el-table-column>
-        <el-table-column prop="teacherintroduce"label="获奖介绍"  align="center">
+        <el-table-column prop="winningDetails"label="获奖介绍"  align="center">
         </el-table-column>
         <!--        <el-table-column prop="image" label="图片" min-width="20%" >-->
         <!--        </el-table-column>-->
-        <el-table-column prop="teacherimg" label="照片"   align="center" show-overflow-tooltip>
+        <el-table-column prop="winningIme" label="照片"   align="center" show-overflow-tooltip>
           <!-- 图片的显示 -->
           <div   slot-scope="scope" style="text-align: center">
-            <img :src="scope.row.teacherimg"  min-width="100" height="100" />
+            <img :src="scope.row.winningIme"  min-width="100" height="100" />
           </div>
         </el-table-column>
 
@@ -38,7 +38,7 @@
 
             <el-button class="new-button"  label="操作" align="center" v-if="showButton"
                        :style="{color:'#198ce9','cursor':'pointer'}"
-                       type="primary" @click="dialogFormVisible = true"
+                       type="primary"  @click="getId(scope.row.id)"
             ><span style="color: black">删除</span></el-button>
             <el-dialog title="是否确认删除" :visible.sync="dialogFormVisible" :append-to-body="true"  @closed="handleClose">
               <div slot="footer" class="dialog-footer">
@@ -84,9 +84,10 @@
           resource: '',
           desc: ''
         },
-        teachername:"",
+        WinningName:"",
         page: 1,
-        total:0
+        total:0,
+        delid:''
       };
     },
     methods: {
@@ -97,10 +98,10 @@
         let { data } = await axios({
           withCredentials: false,
           method: 'post',
-          url: `http://localhost:8080/api/teacher/getAllTeacher`,
+          url: `http://localhost:8080/api/researchwinning/getAllWinning`,
           data:{
             "id": id,
-            "teachername": this.teachername,
+            "WinningName": this.WinningName,
             "page": this.page
           }
         })
@@ -117,16 +118,20 @@
         this.$router.go(-1);
       },
       toPage(ev){
-        this.$router.push('/teacher/teacheredit?id=' + ev.id)
+        this.$router.push('/kejiresult/Winning/WinningEdit?id=' + ev.id)
       },
       dateFormat(row, column, cellValue) {
         return cellValue ? fecha.format(new Date(cellValue), 'YYYY-MM-DD') : '';
       },
+      getId(ev){
+        this.delid = ev;
+        this.dialogFormVisible = true
+      },
       toAddPage(ev){
-        this.$router.push("/teacher/teacheradd")
+        this.$router.push("/kejiresult/Winning/WinningAdd")
       },
       goEdit() {
-        this.$router.push('/teacher/teacheredit?id=' + this.id)
+        this.$router.push('/kejiresult/Winning/WinningEdit?id=' + this.id)
       },
       handleClose () {
         this.form = {
@@ -141,13 +146,12 @@
         }
       },
       handleSave(ev) {
-        var id = ev.id;
         let {data} = axios({
           withCredentials: false,
           method: 'post',
-          url: `http://localhost:8080/api/teacher/deleteById`,
+          url: `http://localhost:8080/api/researchwinning/deleteById`,
           data: {
-            "id": id
+            "id": this.delid
           }
         })
         this.dialogFormVisible = false

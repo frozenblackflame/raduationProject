@@ -49,19 +49,19 @@
         axios({
           withCredentials: false,
           method: 'post',
-          url: `http://localhost:8080/api/teacher/insertTeacher`,
+          url: `http://localhost:8080/api/researchwinning/insertWinning`,
           data: {
-            "teacherName": this.form.name,
-            "teacher_introduce": this.form.desc,
-            "teacherImg": this.form.imageUrl
+            "winningName": this.form.name,
+            "winningDetails": this.form.desc,
+            "winningImg": this.form.imageUrl
           }
         }).then((res) => {
           console.log(res.code)
-          this.$router.push("/academic/teacher")
+          this.$router.push("/result/research/Winning")
         })
       },
       goBack(){
-        this.$router.push("/academic/teacher")
+        this.$router.push("/result/research/Winning")
       }
     }
   }

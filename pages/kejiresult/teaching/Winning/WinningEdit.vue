@@ -3,17 +3,17 @@
 
     <el-form ref="form" :model="form" label-width="80px">
       <el-form-item label="教师名称">
-        <el-input type="textarea" v-model="form.name"></el-input>
+        <el-input type="textarea" v-model="form.name" id="name"></el-input>
       </el-form-item>
       <el-form-item label="教师介绍">
-        <el-input type="textarea" :autosize="{ minRows: 20, maxRows: 100}" v-model="form.desc"></el-input>
+        <el-input type="textarea" :autosize="{ minRows: 20, maxRows: 100}" v-model="form.desc" id="content"></el-input>
       </el-form-item>
 
       <el-form-item label="图片路径">
-        <el-input v-model="form.imageUrl"></el-input>
+        <el-input v-model="form.imageUrl" id="img"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="editResults">立即添加</el-button>
+        <el-button type="primary" @click="editResults">立即修改</el-button>
         <el-button  @click="goBack">取消</el-button>
       </el-form-item>
     </el-form>
@@ -42,6 +42,25 @@
       }
     },
     methods: {
+      async getData(){
+        let { data } = await axios({
+          withCredentials: false,
+          method: 'post',
+          url: `http://localhost:8080/api/teachingwinning/getWinningById`,
+          data:{
+            "id": getQueryString("id")
+          }
+        })
+        this.name = data.extend.results.winningName;
+        this.desc = data.extend.results.winningDetails;
+        this.imgUrl = data.extend.results.winningImg;
+        console.log(this.desc)
+        document.getElementById("content").value = this.desc
+        document.getElementById("img").value = this.imgUrl
+        document.getElementById("name").value = this.name
+
+        console.log(this.name)
+      },
       async editResults() {
         // console.log(this.form.name)
         // console.log(this.form.desc)
@@ -49,20 +68,24 @@
         axios({
           withCredentials: false,
           method: 'post',
-          url: `http://localhost:8080/api/teacher/insertTeacher`,
+          url: `http://localhost:8080/api/teachingwinning/updateWinning`,
           data: {
-            "teacherName": this.form.name,
-            "teacher_introduce": this.form.desc,
-            "teacherImg": this.form.imageUrl
+            "id": getQueryString("id"),
+            "winningDetails": this.form.desc,
+            "winningName": this.form.name,
+            "winningImg": this.form.imageUrl
           }
         }).then((res) => {
           console.log(res.code)
-          this.$router.push("/academic/teacher")
+          this.$router.push("/result/research/Winning")
         })
       },
       goBack(){
-        this.$router.push("/academic/teacher")
+        this.$router.push("/result/research/Winning")
       }
+    },
+    created () {
+      this.getData ()
     }
   }
   function getQueryString(name){

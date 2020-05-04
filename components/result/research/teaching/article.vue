@@ -24,7 +24,7 @@
 
                 </el-button>
 <!--                v-bind:href="['http://localhost:8080/api/gaoshuiping/download?pdfUrl=' + scope.row.pdfUrl]"-->
-                <el-button style="margin-right: 10px"  type="primary" v-if="showButton"  @click="dialogFormVisible = true"><span style="color: black;">删除</span></el-button>
+                <el-button style="margin-right: 10px"  type="primary" v-if="showButton"   @click="getId(scope.row.id)"><span style="color: black;">删除</span></el-button>
                 <el-button type="primary" @click="judge(scope.row.pdfUrl)"><span style="color: black;">下载文件</span></el-button>
               </el-row>
             </div>
@@ -68,6 +68,7 @@
         total:0,
         currentPage1:1,
         fileList:[],
+        delid:""
 
       };
     },
@@ -128,16 +129,19 @@
         }
       },
       handleSave(ev) {
-        var id = ev.id;
         let {data} = axios({
           withCredentials: false,
           method: 'post',
           url: `http://localhost:8080/api/gaoshuiping/deleteGao`,
           data: {
-            "id": id
+            "id": this.delid
           }
         })
         this.$router.go(0)
+      },
+      getId(ev){
+        this.delid = ev;
+        this.dialogFormVisible = true
       },
       toAddPage(){
         this.$router.push("/gao/gaoadd")

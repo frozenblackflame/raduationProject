@@ -29,13 +29,13 @@
         <el-submenu index="4-1">
         <template slot="title">科研成果</template>
           <el-menu-item index="/result/research/project">科研项目</el-menu-item>
-          <el-menu-item index="/result/research/">科研获奖</el-menu-item>
-          <el-menu-item index="/result/research/">发明专利</el-menu-item>
+          <el-menu-item index="/result/research/Winning">科研获奖</el-menu-item>
+          <el-menu-item index="/result/research/patent">发明专利</el-menu-item>
           <el-submenu index="4-1-1">
             <template slot="title">科研反哺教学</template>
             <el-menu-item index="/result/research/teaching/project">教改项目</el-menu-item>
-            <el-menu-item index="/result/research/teaching/">竞赛获奖</el-menu-item>
-            <el-menu-item index="/result/research/teaching/">教改论文</el-menu-item>
+            <el-menu-item index="/result/research/teaching/Winning">竞赛获奖</el-menu-item>
+            <el-menu-item index="/result/research/teaching/article">教改论文</el-menu-item>
           </el-submenu>
         </el-submenu>
         <el-menu-item index="/result/International">国际标准</el-menu-item>

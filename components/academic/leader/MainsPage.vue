@@ -46,7 +46,7 @@
 
             <el-button class="new-button"  label="操作" align="center" v-if="showButton"
                        :style="{color:'#198ce9','cursor':'pointer'}"
-                       type="primary" @click="dialogFormVisible = true"
+                       type="primary" @click="getId(scope.row.id)"
             ><span style="color: black">删除</span></el-button>
             <el-dialog title="是否确认删除" :visible.sync="dialogFormVisible" :append-to-body="true" @closed="handleClose">
               <div slot="footer" class="dialog-footer">
@@ -96,6 +96,7 @@
           resource: '',
           desc: ''
         },
+        delid:''
       };
     },
     methods: {
@@ -147,13 +148,12 @@
         }
       },
       handleSave(ev) {
-        var id = ev.id;
         let {data} = axios({
           withCredentials: false,
           method: 'post',
           url: `http://localhost:8080/api/leader/deleteById`,
           data: {
-            "id": id
+            "id": this.delid
           }
         })
         this.dialogFormVisible = false
@@ -162,6 +162,10 @@
       handleCurrentChange(val){
         this.page = val
         this.getData()
+      },
+      getId(ev){
+        this.delid = ev
+        this.dialogFormVisible = true
       }
     },
     created () {

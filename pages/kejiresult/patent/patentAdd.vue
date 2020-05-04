@@ -2,11 +2,11 @@
   <div>
 
     <el-form ref="form" :model="form" label-width="80px">
-      <el-form-item label="教师名称">
+      <el-form-item label="专利名称">
         <el-input type="textarea" v-model="form.name"></el-input>
       </el-form-item>
-      <el-form-item label="教师介绍">
-        <el-input type="textarea" :autosize="{ minRows: 20, maxRows: 100}" v-model="form.desc"></el-input>
+      <el-form-item label="专利介绍">
+        <el-input type="textarea" :autosize="{ minRows: 20, maxRows: 100}" v-model="form.details"></el-input>
       </el-form-item>
 
       <el-form-item label="图片路径">
@@ -30,13 +30,7 @@
       return {
         form: {
           name: '',
-          region: '',
-          date1: '',
-          date2: '',
-          delivery: false,
-          type: [],
-          resource: '',
-          desc: '',
+         details:'',
           imageUrl: ''
         }
       }
@@ -49,19 +43,19 @@
         axios({
           withCredentials: false,
           method: 'post',
-          url: `http://localhost:8080/api/teacher/insertTeacher`,
+          url: `http://localhost:8080/api/patent/insertPatent`,
           data: {
-            "teacherName": this.form.name,
-            "teacher_introduce": this.form.desc,
-            "teacherImg": this.form.imageUrl
+            "patentName": this.form.name,
+            "patentDetails": this.form.details,
+            "patentImg": this.form.imageUrl
           }
         }).then((res) => {
           console.log(res.code)
-          this.$router.push("/academic/teacher")
+          this.$router.push("/result/research/patent")
         })
       },
       goBack(){
-        this.$router.push("/academic/teacher")
+        this.$router.push("/result/research/patent")
       }
     }
   }
