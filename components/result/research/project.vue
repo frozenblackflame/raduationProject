@@ -62,12 +62,12 @@
         let {data} = await axios({
           withCredentials: false,
           method: 'post',
-          url: `http://localhost:8080/api/standarddesc/getAllStandard`,
+          url: `http://localhost:8080/api/teachingproject/getProject`,
           // data: {
           //   "id": id
           // }
         })
-        this.content = data.extend.results[0].standard
+        this.content = data.extend.results[0].project
         this.id = data.extend.results[0].id
         // var time1 = data.extend.results[0].createTime;
         // this.createTime = time1.split("T")[0]
@@ -82,7 +82,7 @@
         this.$router.go(-1)
       },
       goEdit() {
-        this.$router.push('/standardedit/standardedit?id=' + this.id)
+        this.$router.push('/kejiresult/project/edit?id=' + this.id)
       }
     },
     created() {
