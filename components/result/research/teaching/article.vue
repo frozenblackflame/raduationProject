@@ -5,12 +5,12 @@
                type="primary" @click="toAddPage"
     >
       <span style="color: black">新增</span></el-button>
-    <label style="margin-left: 700px">文章名称：</label><el-input style="width: 15%;" v-model="articlename"></el-input>
+    <label style="margin-left: 700px">文章名称：</label><el-input style="width: 15%;" v-model="articleName"></el-input>
     <el-button type="primary" @click="getData">搜索</el-button>
     <el-container>
       <el-table :data="listDate" border stripe style="pxoverflow: auto;max-height: 650px;margin-top: 20px;">
-        <el-table-column prop="title" label="论文标题"></el-table-column>
-        <el-table-column prop="desc" label="论文详情"></el-table-column>
+        <el-table-column prop="articleTitle" label="论文标题"></el-table-column>
+        <el-table-column prop="articleDetails" label="论文详情"></el-table-column>
         <el-table-column prop="createTime" label="发表日期" :formatter="dateFormat" align="center" show-overflow-tooltip></el-table-column>
         <el-table-column label="操作" show-overflow-tooltip >
           <template slot-scope="scope" >
@@ -23,9 +23,8 @@
                   <span style="color: black">编辑</span>
 
                 </el-button>
-<!--                v-bind:href="['http://localhost:8080/api/gaoshuiping/download?pdfUrl=' + scope.row.pdfUrl]"-->
                 <el-button style="margin-right: 10px"  type="primary" v-if="showButton"   @click="getId(scope.row.id)"><span style="color: black;">删除</span></el-button>
-                <el-button type="primary" @click="judge(scope.row.pdfUrl)"><span style="color: black;">下载文件</span></el-button>
+                <el-button type="primary" @click="judge(scope.row.articlePdfurl)"><span style="color: black;">下载文件</span></el-button>
               </el-row>
             </div>
             <el-dialog title="是否删除" :visible.sync="dialogFormVisible" :append-to-body="true" @closed="handleClose">
@@ -63,12 +62,13 @@
         id: "",
         showButton: false,
         dialogFormVisible: false,
-        articlename:'',
+        articleName:'',
         page:1,
         total:0,
         currentPage1:1,
         fileList:[],
-        delid:""
+        delid:"",
+        listDate:[]
 
       };
     },
@@ -80,10 +80,10 @@
         let { data } = await axios({
           withCredentials: false,
           method: 'post',
-          url: `http://localhost:8080/api/gaoshuiping/getAllGao`,
+          url: `http://localhost:8080/api/article/getAllArticle`,
           data:{
             "id": id,
-            "articlename":this.articlename,
+            "articleName":this.articleName,
             "page": this.page
           }
         })
@@ -102,7 +102,7 @@
         this.$router.go(-1);
       },
       toPage(ev){
-        this.$router.push("/gao/gaoedit?id=" + ev.id)
+        this.$router.push("/kejiresult/teaching/article/articleEdit?id=" + ev.id)
       },
       dateFormat(row, column, cellValue) {
         return cellValue ? fecha.format(new Date(cellValue), 'YYYY-MM-DD') : '';
@@ -111,7 +111,7 @@
         if (pdfUrl === null){
           this.$message.error("文件不存在。");
         }else {
-          window.open('http://localhost:8080/api/gaoshuiping/download?pdfUrl='+pdfUrl,"_blank")
+          window.open('http://localhost:8080/api/article/download?pdfUrl='+pdfUrl,"_blank")
           this.$message.success("文件下载成功。");
         }
       },
@@ -132,7 +132,7 @@
         let {data} = axios({
           withCredentials: false,
           method: 'post',
-          url: `http://localhost:8080/api/gaoshuiping/deleteGao`,
+          url: `http://localhost:8080/api/article/deleteArticle`,
           data: {
             "id": this.delid
           }
@@ -144,7 +144,7 @@
         this.dialogFormVisible = true
       },
       toAddPage(){
-        this.$router.push("/gao/gaoadd")
+        this.$router.push("/kejiresult/teaching/article/articleAdd")
       },
       handleCurrentChange(val){
         this.page = val;
