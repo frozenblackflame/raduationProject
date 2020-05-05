@@ -1,5 +1,6 @@
 <template>
   <center id="poster">
+    <el-scrollbar wrap-class="list" view-style="font-weight: bold;" view-class="view-box" :native="false" >
     <el-header height class="heard">
       <Header></Header>
     </el-header>
@@ -54,6 +55,7 @@
 
       </el-scrollbar>
     </div>
+    </el-scrollbar>
   </center>
 
 </template>
