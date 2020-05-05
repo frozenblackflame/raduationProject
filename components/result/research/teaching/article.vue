@@ -8,7 +8,7 @@
     <label style="margin-left: 700px">文章名称：</label><el-input style="width: 15%;" v-model="articleName"></el-input>
     <el-button type="primary" @click="getData">搜索</el-button>
     <el-container>
-      <el-table :data="listDate" border stripe style="pxoverflow: auto;max-height: 650px;margin-top: 20px;">
+      <el-table :data="listDate" border stripe style="pxoverflow: auto;margin-top: 20px;">
         <el-table-column prop="articleTitle" label="论文标题"></el-table-column>
         <el-table-column prop="articleDetails" label="发表刊物"></el-table-column>
         <el-table-column prop="createTime" label="发表日期" :formatter="dateFormat" align="center" show-overflow-tooltip></el-table-column>
