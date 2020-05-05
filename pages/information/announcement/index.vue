@@ -5,7 +5,6 @@
       <Header></Header>
     </el-header>
     <div style="width: 80%;margin-top: 20px;background-color: #F5F5F5">
-      <el-scrollbar wrap-class="list" view-style="font-weight: bold;" view-class="view-box" :native="false">
       <el-container>
         <el-header height>
           <el-page-header @back="goBack" content="返回首页"></el-page-header>
@@ -21,6 +20,7 @@
           <div class="imagepage">
             <div>
               <h1 class="title-style">{{title}}</h1>
+              <h4 class="time-style"><span>发表时间：</span>{{createTime}}</h4>
             </div>
             <el-divider></el-divider>
             <div>
@@ -30,9 +30,7 @@
               <!--            <h3>{{image}}</h3>-->
               <img :src="image" class="image" />
               <el-divider></el-divider>
-              <div>
-                <h4 class="time-style"><span>发表时间：</span>{{createTime}}</h4>
-              </div>
+
 
               <div>
                 <el-dialog title="是否删除" :visible.sync="dialogFormVisible"  @closed="handleClose" :modal-append-to-body='false'>
@@ -50,7 +48,6 @@
         </el-main>
       </el-container>
 
-      </el-scrollbar>
     </div>
 
     </el-scrollbar>
@@ -270,7 +267,7 @@
   .time-style{
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
     font-size: 15px;
-    position: absolute;
+    text-align: right;
     margin-left: 1200px;
   }
   .el-page-header__content,.el-page-header__title{

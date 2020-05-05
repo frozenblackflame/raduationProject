@@ -1,60 +1,60 @@
 <template>
   <center id="poster">
     <el-scrollbar wrap-class="list" view-style="font-weight: bold;" view-class="view-box" :native="false" >
-    <el-header height class="heard">
-      <Header></Header>
-    </el-header>
-    <div style="width: 80%;margin-top: 20px;background-color:#F5F5F5">
-      <el-scrollbar wrap-class="list" view-style="font-weight: bold;" view-class="view-box" :native="false">
-      <el-container>
-        <el-header height>
-          <el-page-header @back="goBack" content="返回首页"></el-page-header>
-          <div>
-            <el-button type="primary" icon="el-icon-edit"  v-if="showButton" @click="goEdit"></el-button>
-            <el-button type="primary" icon="el-icon-delete"  v-if="showButton"  @click="dialogFormVisible = true"></el-button>
-            <!--          <el-button type="primary" icon="el-icon-download"   @click="printOut()"></el-button>-->
-          </div>
-        </el-header>
-        <el-divider></el-divider>
-        <el-main id="getPdf">
-
-          <div class="imagepage">
-            <div>
-              <h1 class="title-style">{{title}}</h1>
-            </div>
-            <el-divider></el-divider>
-            <div>
-              <h4 class="content-style">{{content}}</h4>
-            </div>
-            <div>
-              <!--            <h3>{{image}}</h3>-->
-              <img :src="image" class="image" />
-              <el-divider></el-divider>
-              <h4 class="time-style"><span>发表时间：</span>{{createTime}}</h4>
+      <el-header height class="heard">
+        <Header></Header>
+      </el-header>
+      <div style="width: 80%;margin-top: 20px;background-color:#F5F5F5">
+          <el-container>
+            <el-header height>
+              <el-page-header @back="goBack" content="返回首页"></el-page-header>
               <div>
-                <el-dialog title="是否删除" :visible.sync="dialogFormVisible"  @closed="handleClose" :modal-append-to-body='false'>
-                  <el-form :model="form" :rules="rules" ref="ruleForm">
-                  </el-form>
-                  <div slot="footer" class="dialog-footer">
-                    <el-button @click="dialogFormVisible = false">取 消</el-button>
-                    <el-button type="primary" @click="handleSave">确 定</el-button>
-                  </div>
-                </el-dialog>
+                <el-button type="primary" icon="el-icon-edit"  v-if="showButton" @click="goEdit"></el-button>
+                <el-button type="primary" icon="el-icon-delete"  v-if="showButton"  @click="dialogFormVisible = true"></el-button>
+                <!--          <el-button type="primary" icon="el-icon-download"   @click="printOut()"></el-button>-->
               </div>
-            </div>
-          </div>
+            </el-header>
+            <el-divider></el-divider>
+            <el-main id="getPdf">
 
-        </el-main>
+              <div class="imagepage">
+                <div>
+                  <h1 class="title-style">{{title}}</h1>
+                  <h4 class="time-style"><span>发表时间：</span>{{createTime}}</h4>
+                </div>
+                <el-divider></el-divider>
+                <div>
+                  <h4 class="content-style">{{content}}</h4>
+                </div>
+                <div>
+                  <!--            <h3>{{image}}</h3>-->
+                  <img :src="image" class="image" />
 
-        <el-dialog title="是否确认删除" :visible.sync="dialogFormVisible"  @closed="handleClose">
-          <div slot="footer" class="dialog-footer">
-            <el-button @click="dialogFormVisible = false">取 消</el-button>
-            <el-button type="primary" @click="handleSave">确 定 </el-button>
-          </div>
-        </el-dialog>
-      </el-container>
-      </el-scrollbar>
-    </div>
+                  <el-divider></el-divider>
+
+                  <div>
+                    <el-dialog title="是否删除" :visible.sync="dialogFormVisible"  @closed="handleClose" :modal-append-to-body='false'>
+                      <el-form :model="form" :rules="rules" ref="ruleForm">
+                      </el-form>
+                      <div slot="footer" class="dialog-footer">
+                        <el-button @click="dialogFormVisible = false">取 消</el-button>
+                        <el-button type="primary" @click="handleSave">确 定</el-button>
+                      </div>
+                    </el-dialog>
+                  </div>
+                </div>
+              </div>
+
+            </el-main>
+
+            <el-dialog title="是否确认删除" :visible.sync="dialogFormVisible"  @closed="handleClose">
+              <div slot="footer" class="dialog-footer">
+                <el-button @click="dialogFormVisible = false">取 消</el-button>
+                <el-button type="primary" @click="handleSave">确 定 </el-button>
+              </div>
+            </el-dialog>
+          </el-container>
+      </div>
     </el-scrollbar>
 
   </center>
@@ -273,7 +273,7 @@
   .time-style{
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
     font-size: 15px;
-    position: absolute;
+    text-align: right;
     margin-left: 1200px;
   }
   .el-page-header__content,.el-page-header__title{
