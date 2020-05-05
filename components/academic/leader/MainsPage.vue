@@ -20,10 +20,15 @@
       ><span style="color: black">新增</span></el-button>
       <label style="margin-left: 700px">带头人名称：</label><el-input style="width: 15%;" v-model="leadername"></el-input>
       <el-button type="primary" @click="getData">搜索</el-button>
-      <el-table :data="listDate" style="margin-top: 20px; pxoverflow: auto;max-height: 600px;"  stripe>
+
+      <el-table :data="listDate" style="margin-top: 20px;overflow: auto;max-height: 600px;"  stripe>
+
+
 
         <el-table-column prop="leadername"   label="教师名称"  align="center" show-overflow-tooltip>
         </el-table-column>
+
+
         <el-table-column prop="leaderintroduce"  label="教师介绍" align="center" >
         </el-table-column>
 <!--        <el-table-column prop="image" label="图片" min-width="20%" >-->
@@ -56,6 +61,7 @@
             </el-dialog>
           </template>
         </el-table-column>
+
       </el-table>
 
       <el-pagination

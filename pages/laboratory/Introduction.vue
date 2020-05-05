@@ -46,4 +46,5 @@ export default {
   background-size: cover;
   /*position: fixed;*/
 }
+html,body {height: 100%;}
 </style>

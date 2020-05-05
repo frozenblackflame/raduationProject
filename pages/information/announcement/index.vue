@@ -28,7 +28,8 @@
             </div>
             <div>
               <!--            <h3>{{image}}</h3>-->
-              <img :src="image" class="image" />
+<!--              <img :src="image" class="image" />-->
+              <el-image :src="image" class="image"/>
               <el-divider></el-divider>
 
 
@@ -220,7 +221,7 @@
   .image {
     width: 50%;
     height: 30%;
-    position: relative;
+    /*position: relative;*/
     margin-top: 30px;
     top: 30px;
     /*padding-bottom: 250px;*/

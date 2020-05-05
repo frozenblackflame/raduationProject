@@ -13,7 +13,7 @@
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="editResults">立即添加</el-button>
-        <el-button>取消</el-button>
+        <el-button @click="goback">取消</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -58,6 +58,9 @@
           console.log(res.code)
           this.$router.push("/information/announcement/list");
         })
+      },
+      goback(){
+        this.$router.push("/information/announcement/list");
       }
     }
   }

@@ -2,13 +2,13 @@
   <div>
 
     <el-form ref="form" :model="form" label-width="80px">
-      <el-form-item label="教师姓名">
+      <el-form-item label="部门">
         <el-input v-model="form.name"></el-input>
       </el-form-item>
       <el-form-item label="联系方式">
         <el-input type="textarea" v-model="form.desc"></el-input>
       </el-form-item>
-      <el-form-item label="部门">
+      <el-form-item label="办公地点">
         <el-input v-model="form.imageUrl"></el-input>
       </el-form-item>
       <el-form-item>

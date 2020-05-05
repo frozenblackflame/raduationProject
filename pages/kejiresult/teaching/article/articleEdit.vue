@@ -5,7 +5,7 @@
       <el-form-item label="文章标题">
         <el-input v-model="form.name" id="name"></el-input>
       </el-form-item>
-      <el-form-item label="文章内容">
+      <el-form-item label="发表刊物">
         <el-input type="textarea" :autosize="{ minRows: 20, maxRows: 100}" v-model="form.details" id="content"></el-input>
       </el-form-item>
       <el-form-item label="文件上传">

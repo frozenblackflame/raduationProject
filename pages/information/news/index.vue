@@ -32,7 +32,7 @@
               <h4 class="content-style">{{content}}</h4>
             </div>
             <!--            <h3>{{image}}</h3>-->
-            <img :src="image" class="image" />
+            <el-image :src="image" class="image" />
             <el-divider></el-divider>
 
             <div>

@@ -43,18 +43,18 @@
       </el-col>
     </el-row>
     <el-row>
-      <el-col :span="12">
-        <el-card class="box-card">
-          <div slot="header" class="clearfix">
-            <span class="card_title">最新成果</span>
-            <nuxt-link to="/information/latestResults/list" style="float: right; padding: 3px 0" type="text">更多>>></nuxt-link>
-          </div>
-          <div v-for="(o,index) in results" :key="index" class="text item">
-            <nuxt-link :to="'/information/latestResults?id=' + o.id">{{ o.resultsTitle}}</nuxt-link>
-          </div>
-        </el-card>
-      </el-col>
-      <el-col :span="12">
+<!--      <el-col :span="12">-->
+<!--        <el-card class="box-card">-->
+<!--          <div slot="header" class="clearfix">-->
+<!--            <span class="card_title">最新成果</span>-->
+<!--            <nuxt-link to="/information/latestResults/list" style="float: right; padding: 3px 0" type="text">更多>>></nuxt-link>-->
+<!--          </div>-->
+<!--          <div v-for="(o,index) in results" :key="index" class="text item">-->
+<!--            <nuxt-link :to="'/information/latestResults?id=' + o.id">{{ o.resultsTitle}}</nuxt-link>-->
+<!--          </div>-->
+<!--        </el-card>-->
+<!--      </el-col>-->
+      <el-col :span="24">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
             <span class="card_title">科技成果</span>

@@ -13,7 +13,7 @@
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="editResults">立即修改</el-button>
-        <el-button>取消</el-button>
+        <el-button @click="goBack">取消</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -60,6 +60,7 @@
 
          console.log(this.name)
        },
+
        async editResults() {
          console.log(this.form.name)
          console.log(this.form.desc)
@@ -78,7 +79,10 @@
            console.log(res.code)
            this.$router.push("/information/announcement?id=" + getQueryString("id"))
          })
-       }
+       },
+       goBack(){
+         this.$router.push("/information/announcement?id=" + getQueryString("id"))
+       },
      },
      created () {
        this.getData ()

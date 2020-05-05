@@ -4,9 +4,9 @@
 
 
   <el-table :data="listDate" border stripe>
-    <el-table-column prop="teachename" label="教师姓名"></el-table-column>
+    <el-table-column prop="teachename" label="部门"></el-table-column>
     <el-table-column prop="telephone" label="联系方式"></el-table-column>
-    <el-table-column prop="dept" label="部门"></el-table-column>
+    <el-table-column prop="dept" label="办公地点"></el-table-column>
     <!--    <el-table-column prop="createTime" label="日期" :formatter="dateFormat" align="center" show-overflow-tooltip></el-table-column>-->
     <el-table-column label="操作" v-if="showButton" show-overflow-tooltip>
       <template slot-scope="scope" >

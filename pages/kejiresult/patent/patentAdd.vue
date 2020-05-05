@@ -5,7 +5,7 @@
       <el-form-item label="专利名称">
         <el-input type="textarea" v-model="form.name"></el-input>
       </el-form-item>
-      <el-form-item label="专利介绍">
+      <el-form-item label="专利号">
         <el-input type="textarea" :autosize="{ minRows: 20, maxRows: 100}" v-model="form.details"></el-input>
       </el-form-item>
 

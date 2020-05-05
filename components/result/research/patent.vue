@@ -16,7 +16,7 @@
 
         <el-table-column prop="patentName"   label="专利名称"  align="center" show-overflow-tooltip>
         </el-table-column>
-        <el-table-column prop="patentDetails"label="专利介绍"  align="center">
+        <el-table-column prop="patentDetails"label="专利号"  align="center">
         </el-table-column>
         <!--        <el-table-column prop="image" label="图片" min-width="20%" >-->
         <!--        </el-table-column>-->

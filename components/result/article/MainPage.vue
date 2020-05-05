@@ -8,9 +8,10 @@
     <label style="margin-left: 700px">文章名称：</label><el-input style="width: 15%;" v-model="articlename"></el-input>
     <el-button type="primary" @click="getData">搜索</el-button>
     <el-container>
+
       <el-table :data="listDate" border stripe style="pxoverflow: auto;max-height: 650px;margin-top: 20px;">
         <el-table-column prop="title" label="论文标题"></el-table-column>
-        <el-table-column prop="desc" label="论文详情"></el-table-column>
+        <el-table-column prop="desc" label="发表刊物"></el-table-column>
         <el-table-column prop="createTime" label="发表日期" :formatter="dateFormat" align="center" show-overflow-tooltip></el-table-column>
         <el-table-column label="操作" show-overflow-tooltip >
           <template slot-scope="scope" >
@@ -23,7 +24,7 @@
                   <span style="color: black">编辑</span>
 
                 </el-button>
-<!--                v-bind:href="['http://localhost:8080/api/gaoshuiping/download?pdfUrl=' + scope.row.pdfUrl]"-->
+                <!--                v-bind:href="['http://localhost:8080/api/gaoshuiping/download?pdfUrl=' + scope.row.pdfUrl]"-->
                 <el-button style="margin-right: 10px"  type="primary" v-if="showButton"   @click="getId(scope.row.id)"><span style="color: black;">删除</span></el-button>
                 <el-button type="primary" @click="judge(scope.row.pdfUrl)"><span style="color: black;">下载文件</span></el-button>
               </el-row>
@@ -46,7 +47,7 @@
       layout="prev, pager, next"
       :total="total"
       @current-change="handleCurrentChange"
-      :current-page.sync="currentPage1"
+      :current-page.sync="currentPage"
       :page-size="7"
     >
     </el-pagination>
@@ -66,9 +67,10 @@
         articlename:'',
         page:1,
         total:0,
-        currentPage1:1,
+        currentPage:1,
         fileList:[],
         delid:"",
+        listDate:""
 
       };
     },
@@ -76,7 +78,9 @@
 
       async getData () {
         var id = getQueryString("id");
+        setTimeout(()=>{
 
+        },1000)
         let { data } = await axios({
           withCredentials: false,
           method: 'post',
@@ -88,8 +92,9 @@
           }
         })
         // alert(data.extend.results[0].id)
-        this.listDate = data.extend.results.list
-        this.total = data.extend.results.total
+        this.currentPage = data.extend.results.pageNum;
+        this.listDate = data.extend.results.list;
+        this.total = data.extend.results.total;
         if (localStorage.getItem("role") === "admin") {
           this.showButton = true;
         } else {

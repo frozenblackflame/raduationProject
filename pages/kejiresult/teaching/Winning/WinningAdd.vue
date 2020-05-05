@@ -2,10 +2,10 @@
   <div>
 
     <el-form ref="form" :model="form" label-width="80px">
-      <el-form-item label="教师名称">
+      <el-form-item label="获奖名称">
         <el-input type="textarea" v-model="form.name"></el-input>
       </el-form-item>
-      <el-form-item label="教师介绍">
+      <el-form-item label="获奖介绍">
         <el-input type="textarea" :autosize="{ minRows: 20, maxRows: 100}" v-model="form.desc"></el-input>
       </el-form-item>
 

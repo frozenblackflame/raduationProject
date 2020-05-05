@@ -31,7 +31,7 @@
           </div>
             <div>
               <!--            <h3>{{image}}</h3>-->
-              <img :src="image" class="image" />
+              <el-image :src="image" class="image" />
 
             </div>
               <el-divider></el-divider>

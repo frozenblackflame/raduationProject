@@ -6,7 +6,7 @@
         <!--          <el-page-header @back="goBack" content="详情页面"></el-page-header>-->
         <!--        </el-header>-->
         <!--        <el-divider></el-divider>-->
-        <el-main style="width: 80%;height: 800px;background-color: #F5F5F5;">
+        <el-main style="width: 80%;background-color: #F5F5F5;">
           <div class="imagepage">
             <h1 class="title-style">科研项目</h1>
             <el-divider></el-divider>
@@ -127,12 +127,11 @@
   }
   .imagepage {
     width: 100%;
-    height: 80%;
     display: block;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
     overflow: hidden;
+    -webkit-line-clamp:0;
   }
   .el-page-header__left .el-icon-back,
   .el-page-header__title,
@@ -146,7 +145,7 @@
   .content-style{
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","宋体",Arial,sans-serif;
     font-size: 15px;
-    position: relative;
+    /*position: relative;*/
     top: 20px;
     text-align: left;
     white-space:pre-wrap;
@@ -166,4 +165,5 @@
   body{
     background: #062d68 url(http://www.qnlm.ac/common/css/web/v3/../../../img/web/v3/bg_conlong2.jpg?1106) no-repeat center -450px/100%;
   }
+  html,body {height: 100%;}
 </style>
