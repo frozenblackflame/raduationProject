@@ -2,16 +2,27 @@
   <div>
 
     <el-form ref="form" :model="form" label-width="80px">
-      <el-form-item label="教师名称">
-        <el-input type="textarea" v-model="form.name" id="name"></el-input>
+      <el-form-item label="主持人">
+        <el-input type="textarea" v-model="form.host"></el-input>
       </el-form-item>
-      <el-form-item label="教师介绍">
-        <el-input type="textarea" :autosize="{ minRows: 20, maxRows: 100}" v-model="form.desc" id="content"></el-input>
+      <el-form-item label="名称">
+        <el-input type="textarea" v-model="form.name"></el-input>
       </el-form-item>
-
-      <el-form-item label="图片路径">
-        <el-input v-model="form.imageUrl" id="img"></el-input>
+      <el-form-item label="类别">
+        <el-input type="textarea" v-model="form.type"></el-input>
       </el-form-item>
+      <el-form-item label="起止日期">
+        <el-date-picker
+          v-model="form.time"
+          type="daterange"
+          range-separator="至"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期">
+        </el-date-picker>
+      </el-form-item>
+      <!--      <el-form-item label="图片路径">-->
+      <!--        <el-input v-model="form.imageUrl"></el-input>-->
+      <!--      </el-form-item>-->
       <el-form-item>
         <el-button type="primary" @click="editResults">立即修改</el-button>
         <el-button  @click="goBack">取消</el-button>
@@ -30,14 +41,10 @@
       return {
         form: {
           name: '',
-          region: '',
-          date1: '',
-          date2: '',
+          host: '',
           delivery: false,
-          type: [],
-          resource: '',
-          desc: '',
-          imageUrl: ''
+          type: '',
+          time:[],
         }
       }
     },
@@ -46,42 +53,38 @@
         let { data } = await axios({
           withCredentials: false,
           method: 'post',
-          url: `http://localhost:8080/api/teacher/getTeacherById`,
+          url: `http://localhost:8080/api/researchproject/getWinningById`,
           data:{
             "id": getQueryString("id")
           }
         })
-        this.form.name = data.extend.results.teachername
-        this.form.desc = data.extend.results.teacherintroduce;
-        this.form.imgUrl = data.extend.results.teacherimg;
-        console.log(this.desc)
-        document.getElementById("content").value = this.form.desc
-        document.getElementById("img").value = this.form.imgUrl
-        document.getElementById("name").value = this.form.name
-
-        console.log(this.name)
+        this.form.name = data.extend.results.name;
+        this.form.host = data.extend.results.host;
+        this.form.type = data.extend.results.type;
+        this.form.time[0] = data.extend.results.time1;
+        this.form.time[1] = data.extend.results.time2;
+        console.log(this.form.time)
       },
       async editResults() {
-        // console.log(this.form.name)
-        // console.log(this.form.desc)
-        // console.log(this.form.imageUrl)
         axios({
           withCredentials: false,
           method: 'post',
-          url: `http://localhost:8080/api/teacher/updateTeacher`,
+          url: `http://localhost:8080/api/researchproject/updateResearchproject`,
           data: {
             "id": getQueryString("id"),
-            "teacher_introduce": this.form.desc,
-            "teacherName": this.form.name,
-            "teacherImg": this.form.imageUrl
+            "name": this.form.name,
+            "host": this.form.host,
+            "time1": this.form.time[0],
+            "time2": this.form.time[1],
+            "type":this.form.type
           }
         }).then((res) => {
           console.log(res.code)
-          this.$router.push("/academic/teacher")
+          this.$router.push("/result/research/project")
         })
       },
       goBack(){
-        this.$router.push("/academic/teacher")
+        this.$router.push("/result/research/project")
       }
     },
     created () {

@@ -14,24 +14,27 @@
       <el-button type="primary" @click="getData">搜索</el-button>
       <el-table :data="listDate" style="margin-top: 20px;overflow: auto;max-height: 600px;" stripe>
 
-        <el-table-column prop="winningName"   label="获奖名称"  align="center" show-overflow-tooltip>
+        <el-table-column prop="winningName"   label="获奖名称"  show-overflow-tooltip>
         </el-table-column>
-        <el-table-column prop="winningDetails"label="获奖介绍"  align="center">
+        <el-table-column prop="winningDetails"label="获奖等级"  >
         </el-table-column>
-        <!--        <el-table-column prop="image" label="图片" min-width="20%" >-->
-        <!--        </el-table-column>-->
-        <el-table-column prop="winningImg" label="照片"   align="center" show-overflow-tooltip>
-          <!-- 图片的显示 -->
-          <div   slot-scope="scope" style="text-align: center">
-            <img :src="scope.row.winningImg"  min-width="100" height="100" />
-          </div>
+        <el-table-column prop="winningTime"label="获奖时间" :formatter="dateFormat" width="100%" show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column prop="winningAuthor"label="获奖教师/主要完成人" >
         </el-table-column>
 
-        <!--        <el-table-column  label="操作" show-overflow-tooltip>-->
-        <!--        </el-table-column>-->
-        <el-table-column label="操作"  align="center" show-overflow-tooltip v-if="showButton">
+
+<!--        <el-table-column prop="winningImg" label="照片"   align="center" show-overflow-tooltip>-->
+<!--          &lt;!&ndash; 图片的显示 &ndash;&gt;-->
+<!--          <div   slot-scope="scope" style="text-align: center">-->
+<!--            <img :src="scope.row.winningImg"  min-width="100" height="100" />-->
+<!--          </div>-->
+<!--        </el-table-column>-->
+
+
+        <el-table-column label="操作"  show-overflow-tooltip v-if="showButton">
           <template slot-scope="scope" >
-            <el-button class="new-button" label="操作" align="center" v-if="showButton"
+            <el-button class="new-button" label="操作"  v-if="showButton"
                        :style="{color:'#198ce9','cursor':'pointer'}"
                        type="primary" @click="toPage(scope.row)"
             ><span style="color: black">编辑</span></el-button>
@@ -56,7 +59,7 @@
         :total="total"
         @current-change="handleCurrentChange"
         :current-page.sync="currentPage1"
-        :page-size="7"
+        :page-size="10"
       >
       </el-pagination>
     </div>
@@ -65,6 +68,7 @@
 
 <script>
   import axios from "axios";
+  import fecha from "fecha";
 
   export default {
     data() {

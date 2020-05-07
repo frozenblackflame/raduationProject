@@ -50,13 +50,13 @@
             "id": getQueryString("id")
           }
         })
-        this.name = data.extend.results.leadername
-        this.desc = data.extend.results.leaderintroduce;
-        this.imgUrl = data.extend.results.leaderimg;
+        this.form.name = data.extend.results.leadername
+        this.form.desc = data.extend.results.leaderintroduce;
+        this.form.imageUrl = data.extend.results.leaderimg;
         console.log(this.desc)
-        document.getElementById("content").value = this.desc
-        document.getElementById("img").value = this.imgUrl
-        document.getElementById("name").value = this.name
+        document.getElementById("content").value = this.form.desc
+        document.getElementById("img").value = this.form.imageUrl
+        document.getElementById("name").value = this.form.name
 
         console.log(this.name)
       },

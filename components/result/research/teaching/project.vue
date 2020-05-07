@@ -1,45 +1,84 @@
 <template>
   <center>
-    <div style="width: 80%;height:100%">
+    <div>
       <el-container>
-        <!--        <el-header height>-->
-        <!--          <el-page-header @back="goBack" content="详情页面"></el-page-header>-->
-        <!--        </el-header>-->
-        <!--        <el-divider></el-divider>-->
-        <el-main style="width: 80%;background-color: #F5F5F5;">
-          <div class="imagepage">
-            <h1 class="title-style">教改项目</h1>
-            <el-divider></el-divider>
-            <h4 class="content-style">{{content}}</h4>
-<!--            <h4 class="time-style"><span>发表时间：</span>{{createTime}}</h4>-->
-            <!--            <el-divider></el-divider>-->
-            <!--            <h3>{{image}}</h3>-->
-            <!--            <img :src="image" class="image" />-->
-            <!--            <el-divider></el-divider>-->
-          </div>
-
-        </el-main>
-        <el-button type="primary" icon="el-icon-edit" class="opertion-button1" v-if="showButton" @click="goEdit"></el-button>
+        <el-header height>
+          <Header></Header>
+        </el-header>
       </el-container>
+      <el-button class="new-button" label="操作" align="center" v-if="showButton"
+                 :style="{color:'#198ce9','cursor':'pointer'}"
+                 type="primary" @click="toAddPage()"
+      ><span style="color: black">新增</span></el-button>
+      <label style="margin-left: 700px">主持人：</label><el-input style="width: 15%;" v-model="host"></el-input>
+      <el-button type="primary" @click="getData">搜索</el-button>
+      <el-table :data="listDate" style="margin-top: 20px;overflow: auto;max-height: 600px;" stripe>
+
+        <el-table-column prop="host"   label="主持人"  show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column prop="name"label="名称"  >
+        </el-table-column>
+        <el-table-column prop="time1,time2"label="起止日期" width="200" :formatter="dateFormat" show-overflow-tooltip>
+          <template slot-scope="scope">
+            {{scope.row.time1|dateFormat}}—{{scope.row.time2|dateFormat}}
+          </template>
+        </el-table-column>
+        <el-table-column prop="type"label="类别" >
+        </el-table-column>
+
+
+        <!--        <el-table-column prop="winningImg" label="照片"   align="center" show-overflow-tooltip>-->
+        <!--          &lt;!&ndash; 图片的显示 &ndash;&gt;-->
+        <!--          <div   slot-scope="scope" style="text-align: center">-->
+        <!--            <img :src="scope.row.winningImg"  min-width="100" height="100" />-->
+        <!--          </div>-->
+        <!--        </el-table-column>-->
+
+
+        <el-table-column label="操作"  show-overflow-tooltip v-if="showButton">
+          <template slot-scope="scope" >
+            <el-button class="new-button" label="操作"  v-if="showButton"
+                       :style="{color:'#198ce9','cursor':'pointer'}"
+                       type="primary" @click="toPage(scope.row)"
+            ><span style="color: black">编辑</span></el-button>
+
+            <el-button class="new-button"  label="操作"  v-if="showButton"
+                       :style="{color:'#198ce9','cursor':'pointer'}"
+                       type="primary"  @click="getId(scope.row.id)"
+            ><span style="color: black">删除</span></el-button>
+            <el-dialog title="是否确认删除" :visible.sync="dialogFormVisible" :append-to-body="true"  @closed="handleClose">
+              <div slot="footer" class="dialog-footer">
+                <el-button @click="dialogFormVisible = false">取 消</el-button>
+                <el-button type="primary" @click="handleSave(scope.row)">确 定</el-button>
+              </div>
+            </el-dialog>
+          </template>
+        </el-table-column>
+      </el-table>
+
+      <el-pagination
+        background
+        layout="prev, pager, next"
+        :total="total"
+        @current-change="handleCurrentChange"
+        :current-page.sync="currentPage1"
+        :page-size="10"
+      >
+      </el-pagination>
     </div>
-
-
   </center>
 </template>
 
 <script>
   import axios from "axios";
+  import fecha from "fecha";
 
   export default {
     data() {
       return {
-        // image: require("../../../static/shiyanshi.png")
-        // title: "",
+        currentPage1:1,
+        listDate: [{ title: "习近平总书记前往甘肃考察，为何要来这所学校？", time: "2019-5-2" ,url:"./"}],
         id: "",
-        content: "",
-        image: "",
-        createTime: "",
-        role: "admin",
         showButton: false,
         dialogFormVisible: false,
         form: {
@@ -52,26 +91,30 @@
           resource: '',
           desc: ''
         },
+       host:"",
+        page: 1,
+        total:0,
+        delid:''
       };
     },
     methods: {
-      async getData() {
-        // var id = getQueryString("id");
-        //
-        // console.log(id)
-        let {data} = await axios({
+
+      async getData () {
+        var id = getQueryString("id");
+
+        let { data } = await axios({
           withCredentials: false,
           method: 'post',
-          url: `http://localhost:8080/api/researchproject/getProject`,
-          // data: {
-          //   "id": id
-          // }
+          url: `http://localhost:8080/api/teachingproject/getAllTeachingproject`,
+          data:{
+            "id": id,
+            "host": this.host,
+            "page": this.page
+          }
         })
-        this.content = data.extend.results[0].project
-        this.id = data.extend.results[0].id
-        // var time1 = data.extend.results[0].createTime;
-        // this.createTime = time1.split("T")[0]
-        // console.log(this.title)
+        // alert(data.extend.results[0].id)
+        this.listDate = data.extend.results.list
+        this.total = data.extend.results.total
         if (localStorage.getItem("role") === "admin") {
           this.showButton = true;
         } else {
@@ -79,16 +122,58 @@
         }
       },
       goBack() {
-        this.$router.go(-1)
+        this.$router.go(-1);
+      },
+      toPage(ev){
+        this.$router.push('/kejiresult/teaching/project/projectEdit?id=' + ev.id)
+      },
+      dateFormat(row, column, cellValue) {
+        return cellValue ? fecha.format(new Date(cellValue), 'YYYY-MM-DD') : '';
+      },
+      toAddPage(ev){
+        this.$router.push("/kejiresult/teaching/project/projectAdd")
+      },
+      getId(ev){
+        this.delid = ev;
+        this.dialogFormVisible = true
       },
       goEdit() {
-        this.$router.push('/kejiresult/teaching/project/edit?id=' + this.id)
+        this.$router.push('/kejiresult/teaching/project/projectEdit?id=' + this.id)
+      },
+      handleClose () {
+        this.form = {
+          name: '',
+          region: '',
+          date1: '',
+          date2: '',
+          delivery: false,
+          type: [],
+          resource: '',
+          desc: ''
+        }
+      },
+      handleSave(ev) {
+        let {data} = axios({
+          withCredentials: false,
+          method: 'post',
+          url: `http://localhost:8080/api/researchproject/deleteById`,
+          data: {
+            "id": this.delid
+          }
+        })
+        this.dialogFormVisible = false
+        this.$router.go(0);
+      },
+      handleCurrentChange(val){
+        this.page = val;
+        this.getData()
       }
+
     },
-    created() {
-      this.getData()
+    created () {
+      this.getData ()
     }
-  }
+  };
   function getQueryString(name){
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
     var reg_rewrite = new RegExp("(^|/)" + name + "/([^/]*)(/|$)", "i");
@@ -105,65 +190,14 @@
 </script>
 
 <style>
-  .image {
-    width: 200px;
-    height: 200px;
-    position: relative;
-    top: 30px;
-  }
-  .opertion-button1{
-    width: 60px;
-    height: 50px;
-    position: relative;
-    left: 100px;
-    top: 20px;
-  }
-  .opertion-button2{
-    width: 60px;
-    height: 50px;
-    position: relative;
-    left: 170px;
-    top: -30px;
-  }
-  .imagepage {
-    width: 100%;
-    display: block;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    -webkit-line-clamp:0;
-  }
-  .el-page-header__left .el-icon-back,
-  .el-page-header__title,
-  .el-page-header__content {
-    font-size: 20px;
-  }
-  .title-style{
-    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-    font-size: 40px;
-  }
-  .content-style{
-    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","宋体",Arial,sans-serif;
-    font-size: 15px;
-    /*position: relative;*/
-    top: 20px;
-    text-align: left;
-    white-space:pre-wrap;
-  }
-  .time-style{
-    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-    font-size: 15px;
-    position: relative;
-    top: 200px;
-  }
-  .el-page-header__content,.el-page-header__title{
-    padding-top: 10px;
-  }
-  .el-page-header__left::after {
-    height: 50px;
-  }
   body{
     background: #062d68 url(http://www.qnlm.ac/common/css/web/v3/../../../img/web/v3/bg_conlong2.jpg?1106) no-repeat center -450px/100%;
   }
-  html,body {height: 100%;}
+  .el-aside {
+    padding-left: 20px;
+  }
+  .el-main {
+    margin-right: 20px;
+    width: 100%;
+  }
 </style>

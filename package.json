@@ -20,7 +20,8 @@
     "html2canvas": "^1.0.0-rc.5",
     "jspdf": "^1.5.3",
     "nuxt": "^2.0.0",
-    "serialize-javascript": "^2.1.2"
+    "serialize-javascript": "^2.1.2",
+    "vue-moment": "^4.1.0"
   },
   "devDependencies": {
     "@gauseen/nuxt-proxy": "^1.0.1",

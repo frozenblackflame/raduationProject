@@ -16,16 +16,22 @@
 
         <el-table-column prop="patentName"   label="专利名称"  align="center" show-overflow-tooltip>
         </el-table-column>
-        <el-table-column prop="patentDetails"label="专利号"  align="center">
+        <el-table-column prop="patentNum"label="专利号"  align="center">
+        </el-table-column>
+        <el-table-column prop="patentType"label="专利类型"  align="center">
+        </el-table-column>
+        <el-table-column prop="patentAuthor"label="设计人"  align="center">
+        </el-table-column>
+        <el-table-column prop="patentTime"label="授权时间" :formatter="dateFormat" align="center">
         </el-table-column>
         <!--        <el-table-column prop="image" label="图片" min-width="20%" >-->
         <!--        </el-table-column>-->
-        <el-table-column prop="patentImg" label="照片"   align="center" show-overflow-tooltip>
-          <!-- 图片的显示 -->
-          <div   slot-scope="scope" style="text-align: center">
-            <img :src="scope.row.patentImg"  min-width="100" height="100" />
-          </div>
-        </el-table-column>
+<!--        <el-table-column prop="patentImg" label="照片"   align="center" show-overflow-tooltip>-->
+<!--          &lt;!&ndash; 图片的显示 &ndash;&gt;-->
+<!--          <div   slot-scope="scope" style="text-align: center">-->
+<!--            <img :src="scope.row.patentImg"  min-width="100" height="100" />-->
+<!--          </div>-->
+<!--        </el-table-column>-->
 
         <!--        <el-table-column  label="操作" show-overflow-tooltip>-->
         <!--        </el-table-column>-->
@@ -56,7 +62,7 @@
         :total="total"
         @current-change="handleCurrentChange"
         :current-page.sync="currentPage1"
-        :page-size="7"
+        :page-size="10"
       >
       </el-pagination>
     </div>
@@ -65,6 +71,7 @@
 
 <script>
   import axios from "axios";
+  import fecha from "fecha";
 
   export default {
     data() {
@@ -121,9 +128,6 @@
         debugger
         this.$router.push('/kejiresult/patent/patentEdit?id=' + ev.id)
       },
-      dateFormat(row, column, cellValue) {
-        return cellValue ? fecha.format(new Date(cellValue), 'YYYY-MM-DD') : '';
-      },
       toAddPage(ev){
         this.$router.push("/kejiresult/patent/patentAdd")
       },
@@ -133,6 +137,9 @@
       getId(ev){
         this.delid = ev;
         this.dialogFormVisible = true
+      },
+      dateFormat(row, column, cellValue) {
+        return cellValue ? fecha.format(new Date(cellValue), 'YYYY-MM-DD') : '';
       },
       handleClose () {
         this.form = {

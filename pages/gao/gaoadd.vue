@@ -8,6 +8,17 @@
       <el-form-item label="发表刊物">
         <el-input type="textarea"  :autosize="{ minRows: 20, maxRows: 100}" v-model="form.desc"></el-input>
       </el-form-item>
+      <el-form-item label="作者">
+        <el-input v-model="form.author"></el-input>
+      </el-form-item>
+      <el-form-item label="发表日期">
+        <el-date-picker
+          v-model="form.time"
+          type="date"
+          placeholder="选择日期">
+        </el-date-picker>
+      </el-form-item>
+
       <el-form-item label="文件上传">
         <el-upload
           :multiple="false"
@@ -53,17 +64,16 @@
           delivery: false,
           type: [],
           resource: '',
+          author:'',
           desc: '',
-          imageUrl: ''
+          imageUrl: '',
+          time:""
         },
         fileList: [],
       }
     },
     methods: {
       async editResults() {
-        console.log(this.form.name)
-        console.log(this.form.desc)
-        console.log(this.form.imageUrl)
         axios({
           withCredentials: false,
           method: 'post',
@@ -72,6 +82,8 @@
             "title": this.form.name,
             "desc": this.form.desc,
             "pdfUrl":this.form.pdfUrl,
+            "time":this.form.time,
+            "author":this.form.author
           }
         }).then((res) => {
           console.log(res.code)

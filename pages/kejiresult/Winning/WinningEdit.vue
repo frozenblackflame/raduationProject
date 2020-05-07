@@ -5,13 +5,22 @@
       <el-form-item label="获奖名称">
         <el-input type="textarea" v-model="form.name" id="name"></el-input>
       </el-form-item>
-      <el-form-item label="获奖介绍">
-        <el-input type="textarea" :autosize="{ minRows: 20, maxRows: 100}" v-model="form.desc" id="content"></el-input>
+      <el-form-item label="获奖等级">
+        <el-input type="textarea" :autosize="{ minRows: 20, maxRows: 100}" v-model="form.desc"></el-input>
       </el-form-item>
-
-      <el-form-item label="图片路径">
-        <el-input v-model="form.imageUrl" id="img"></el-input>
+      <el-form-item label="获奖教师">
+        <el-input type="textarea" v-model="form.author"></el-input>
       </el-form-item>
+      <el-form-item label="获奖时间">
+        <el-date-picker
+          v-model="form.time"
+          type="date"
+          placeholder="选择日期">
+        </el-date-picker>
+      </el-form-item>
+      <!--      <el-form-item label="图片路径">-->
+      <!--        <el-input v-model="form.imageUrl"></el-input>-->
+      <!--      </el-form-item>-->
       <el-form-item>
         <el-button type="primary" @click="editResults">立即修改</el-button>
         <el-button  @click="goBack">取消</el-button>
@@ -35,6 +44,8 @@
           date2: '',
           delivery: false,
           type: [],
+          author:'',
+          time:'',
           resource: '',
           desc: '',
           imageUrl: ''
@@ -51,13 +62,17 @@
             "id": getQueryString("id")
           }
         })
-        this.name = data.extend.results.winningName
-        this.desc = data.extend.results.winningDetails;
-        this.imgUrl = data.extend.results.winningIme;
-        console.log(this.desc)
-        document.getElementById("content").value = this.desc
-        document.getElementById("img").value = this.imgUrl
-        document.getElementById("name").value = this.name
+        this.form.name = data.extend.results.winningName;
+        this.form.desc = data.extend.results.winningDetails;
+        this.form.imgUrl = data.extend.results.winningImg;
+        this.form.author = data.extend.results.winningAuthor;
+        this.form.time = data.extend.results.winningTime;
+        console.log(time)
+        document.getElementById("content").value = this.form.desc;
+        document.getElementById("img").value = this.form.imgUrl;
+        document.getElementById("name").value = this.form.name;
+        document.getElementById("time").value = this.form.time;
+        document.getElementById("author").value = this.form.author;
 
         console.log(this.name)
       },
@@ -73,7 +88,9 @@
             "id": getQueryString("id"),
             "winningDetails": this.form.desc,
             "winningName": this.form.name,
-            "winningImg": this.form.imageUrl
+            "winningImg": this.form.imageUrl,
+            "winningAuthor":this.form.author,
+            "winningTime":this.form.time
           }
         }).then((res) => {
           console.log(res.code)

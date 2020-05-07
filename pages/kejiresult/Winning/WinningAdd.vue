@@ -5,13 +5,22 @@
       <el-form-item label="获奖名称">
         <el-input type="textarea" v-model="form.name"></el-input>
       </el-form-item>
-      <el-form-item label="获奖介绍">
+      <el-form-item label="获奖等级">
         <el-input type="textarea" :autosize="{ minRows: 20, maxRows: 100}" v-model="form.desc"></el-input>
       </el-form-item>
-
-      <el-form-item label="图片路径">
-        <el-input v-model="form.imageUrl"></el-input>
+      <el-form-item label="获奖教师">
+        <el-input type="textarea" v-model="form.author"></el-input>
       </el-form-item>
+      <el-form-item label="获奖时间">
+        <el-date-picker
+          v-model="form.time"
+          type="date"
+          placeholder="选择日期">
+        </el-date-picker>
+      </el-form-item>
+      <!--      <el-form-item label="图片路径">-->
+      <!--        <el-input v-model="form.imageUrl"></el-input>-->
+      <!--      </el-form-item>-->
       <el-form-item>
         <el-button type="primary" @click="editResults">立即添加</el-button>
         <el-button  @click="goBack">取消</el-button>
@@ -35,6 +44,8 @@
           date2: '',
           delivery: false,
           type: [],
+          author:'',
+          time:'',
           resource: '',
           desc: '',
           imageUrl: ''
@@ -53,7 +64,9 @@
           data: {
             "winningName": this.form.name,
             "winningDetails": this.form.desc,
-            "winningImg": this.form.imageUrl
+            "winningImg": this.form.imageUrl,
+            "winningAuthor":this.form.author,
+            "winningTime":this.form.time
           }
         }).then((res) => {
           console.log(res.code)

@@ -12,26 +12,26 @@
       ><span style="color: black">新增</span></el-button>
       <label style="margin-left: 700px">教师名称：</label><el-input style="width: 15%;" v-model="teachername"></el-input>
       <el-button type="primary" @click="getData">搜索</el-button>
-      <el-table :data="listDate" style="margin-top: 20px;overflow: auto;max-height: 600px;" stripe>
+      <el-table :data="listDate" style="margin-top: 20px;overflow: auto;max-height: 600px;text-align: left" stripe>
 
-        <el-table-column prop="teachername"   label="教师名称"  align="center" show-overflow-tooltip>
+        <el-table-column prop="teachername" width="100%"  label="教师名称"  align="center" >
         </el-table-column>
-        <el-table-column prop="teacherintroduce"label="教师介绍"  align="center">
+        <el-table-column prop="teacherintroduce"label="教师介绍"  width="800">
         </el-table-column>
         <!--        <el-table-column prop="image" label="图片" min-width="20%" >-->
         <!--        </el-table-column>-->
-        <el-table-column prop="teacherimg" label="照片"   align="center" show-overflow-tooltip>
+        <el-table-column prop="teacherimg" label="照片"  show-overflow-tooltip>
           <!-- 图片的显示 -->
-          <div   slot-scope="scope" style="text-align: center">
+          <div   slot-scope="scope" >
             <img :src="scope.row.teacherimg"  min-width="100" height="100" />
           </div>
         </el-table-column>
 
         <!--        <el-table-column  label="操作" show-overflow-tooltip>-->
         <!--        </el-table-column>-->
-        <el-table-column label="操作"  align="center" show-overflow-tooltip v-if="showButton">
+        <el-table-column label="操作"   show-overflow-tooltip v-if="showButton">
           <template slot-scope="scope" >
-            <el-button class="new-button" label="操作" align="center" v-if="showButton"
+            <el-button class="new-button" label="操作"  v-if="showButton"
                        :style="{color:'#198ce9','cursor':'pointer'}"
                        type="primary" @click="toPage(scope.row)"
             ><span style="color: black">编辑</span></el-button>

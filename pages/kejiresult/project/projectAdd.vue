@@ -1,19 +1,31 @@
 <template>
   <div>
 
-    <el-form ref="form" :model="form" label-width="80px" >
-      <el-form-item label="文章标题">
-        <el-input v-model="form.name"></el-input>
+    <el-form ref="form" :model="form" label-width="80px">
+      <el-form-item label="主持人">
+        <el-input type="textarea" v-model="form.host"></el-input>
       </el-form-item>
-      <el-form-item label="文章内容">
-        <el-input type="textarea" :autosize="{ minRows: 20, maxRows: 100}"  v-model="form.desc"></el-input>
+      <el-form-item label="名称">
+        <el-input type="textarea" v-model="form.name"></el-input>
       </el-form-item>
-      <el-form-item label="图片路径">
-        <el-input v-model="form.imageUrl"></el-input>
+      <el-form-item label="类别">
+        <el-input type="textarea" v-model="form.type"></el-input>
       </el-form-item>
+      <el-form-item label="起止日期">
+        <el-date-picker
+          v-model="form.time"
+          type="daterange"
+          range-separator="至"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期">
+        </el-date-picker>
+      </el-form-item>
+      <!--      <el-form-item label="图片路径">-->
+      <!--        <el-input v-model="form.imageUrl"></el-input>-->
+      <!--      </el-form-item>-->
       <el-form-item>
         <el-button type="primary" @click="editResults">立即添加</el-button>
-        <el-button @click="goback">取消</el-button>
+        <el-button  @click="goBack">取消</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -29,37 +41,34 @@
       return {
         form: {
           name: '',
-          region: '',
-          date1: '',
-          date2: '',
+          host: '',
           delivery: false,
-          type: [],
-          resource: '',
-          desc: '',
-          imageUrl: '',
-          time:""
+          type: '',
+          time:[],
         }
       }
     },
     methods: {
       async editResults() {
+        console.log(this.form.time)
         axios({
           withCredentials: false,
           method: 'post',
-          url: `http://localhost:8080/api/results/insertResults`,
+          url: `http://localhost:8080/api/researchproject/insertResearchproject`,
           data: {
-            "sort": getQueryString("sort"),
-            "title": this.form.name,
-            "content": this.form.desc,
-            "imgUrl": this.form.imageUrl
+            "name": this.form.name,
+            "host": this.form.host,
+            "time1": this.form.time[0],
+            "time2": this.form.time[1],
+            "type":this.form.type
           }
         }).then((res) => {
           console.log(res.code)
-          this.$router.push("/information/technologicalAchievements/list");
+          this.$router.push("/result/research/project")
         })
       },
-      goback(){
-        this.$router.push("/information/technologicalAchievements/list");
+      goBack(){
+        this.$router.push("/result/research/project")
       }
     }
   }

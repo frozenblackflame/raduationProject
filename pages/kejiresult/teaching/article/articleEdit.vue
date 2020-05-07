@@ -8,6 +8,16 @@
       <el-form-item label="发表刊物">
         <el-input type="textarea" :autosize="{ minRows: 20, maxRows: 100}" v-model="form.details" id="content"></el-input>
       </el-form-item>
+      <el-form-item label="作者">
+        <el-input v-model="form.author"></el-input>
+      </el-form-item>
+      <el-form-item label="发表日期">
+        <el-date-picker
+          v-model="form.time"
+          type="date"
+          placeholder="选择日期">
+        </el-date-picker>
+      </el-form-item>
       <el-form-item label="文件上传">
         <el-upload
           :multiple="false"
@@ -47,6 +57,8 @@
           date1: '',
           date2: '',
           pdfUrl:"",
+          author:'',
+          time:'',
           delivery: false,
           type: [],
           resource: '',
@@ -69,11 +81,16 @@
         })
         this.form.name = data.extend.results.articleTitle;
         this.form.details = data.extend.results.articleDetails;
+        this.form.time = data.extend.results.createTime;
+        this.form.author = data.extend.results.articleAuthor;
+
         // this.imgUrl = data.extend.results.leaderimg;
         console.log(this.desc)
         document.getElementById("content").value = this.form.details;
         // document.getElementById("img").value = this.imgUrl
-        document.getElementById("name").value = this.form.name
+        document.getElementById("name").value = this.form.name;
+        document.getElementById("author").value = this.form.author;
+        document.getElementById("time").value = this.form.time;
       },
       async editResults() {
         axios({
@@ -85,6 +102,8 @@
             "title": this.form.name,
             "details": this.form.details,
             "pdfUrl":this.form.pdfUrl,
+            "author":this.form.author,
+            "time":this.form.time
           }
         }).then((res) => {
           console.log(res.code)

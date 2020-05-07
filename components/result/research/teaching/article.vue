@@ -9,9 +9,10 @@
     <el-button type="primary" @click="getData">搜索</el-button>
     <el-container>
       <el-table :data="listDate" border stripe style="pxoverflow: auto;margin-top: 20px;">
-        <el-table-column prop="articleTitle" label="论文标题"></el-table-column>
+        <el-table-column prop="articleTitle" label="论文名称"></el-table-column>
         <el-table-column prop="articleDetails" label="发表刊物"></el-table-column>
-        <el-table-column prop="createTime" label="发表日期" :formatter="dateFormat" align="center" show-overflow-tooltip></el-table-column>
+        <el-table-column prop="articleAuthor" width="100%" label="作者"></el-table-column>
+        <el-table-column prop="createTime" width="100%" label="发表日期" :formatter="dateFormat"  show-overflow-tooltip></el-table-column>
         <el-table-column label="操作" show-overflow-tooltip >
           <template slot-scope="scope" >
             <div>

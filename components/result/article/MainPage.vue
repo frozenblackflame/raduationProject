@@ -10,9 +10,10 @@
     <el-container>
 
       <el-table :data="listDate" border stripe style="pxoverflow: auto;margin-top: 20px;">
-        <el-table-column prop="title" label="论文标题"></el-table-column>
+        <el-table-column prop="title" label="论文名称"></el-table-column>
         <el-table-column prop="desc" label="发表刊物"></el-table-column>
-        <el-table-column prop="createTime" label="发表日期" :formatter="dateFormat" align="center" show-overflow-tooltip></el-table-column>
+        <el-table-column prop="author"  width="100%" label="作者"></el-table-column>
+        <el-table-column prop="createTime"  width="100%"  label="发表时间" :formatter="dateFormat" show-overflow-tooltip></el-table-column>
         <el-table-column label="操作" show-overflow-tooltip >
           <template slot-scope="scope" >
             <div>
