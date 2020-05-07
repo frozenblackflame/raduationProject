@@ -14,7 +14,7 @@
       <el-button type="primary" @click="getData">搜索</el-button>
       <el-table :data="listDate" style="margin-top: 20px;overflow: auto;max-height: 600px;" stripe>
 
-        <el-table-column prop="host"   label="主持人"  show-overflow-tooltip>
+        <el-table-column prop="host" width="100%"  label="主持人"  show-overflow-tooltip>
         </el-table-column>
         <el-table-column prop="name"label="名称"  >
         </el-table-column>

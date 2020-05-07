@@ -14,9 +14,9 @@
       <el-button type="primary" @click="getData">搜索</el-button>
       <el-table :data="listDate" style="margin-top: 20px;overflow: auto;max-height: 600px;" stripe>
 
-        <el-table-column prop="winningName"   label="获奖名称"   show-overflow-tooltip>
+        <el-table-column prop="winningName" width="350"  label="获奖名称"   show-overflow-tooltip>
         </el-table-column>
-        <el-table-column prop="winningDetails"label="获奖等级"  >
+        <el-table-column prop="winningDetails"label="获奖等级" width="400" >
         </el-table-column>
         <el-table-column prop="winningTime"label="获奖时间" :formatter="dateFormat" width="100%" show-overflow-tooltip>
         </el-table-column>

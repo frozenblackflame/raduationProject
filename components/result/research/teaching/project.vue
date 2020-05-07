@@ -14,16 +14,16 @@
       <el-button type="primary" @click="getData">搜索</el-button>
       <el-table :data="listDate" style="margin-top: 20px;overflow: auto;max-height: 600px;" stripe>
 
-        <el-table-column prop="host"   label="主持人"  show-overflow-tooltip>
+        <el-table-column prop="host"  width="100%" label="主持人"  show-overflow-tooltip>
         </el-table-column>
-        <el-table-column prop="name"label="名称"  >
+        <el-table-column prop="name"label="名称" width="350" >
         </el-table-column>
         <el-table-column prop="time1,time2"label="起止日期" width="200" :formatter="dateFormat" show-overflow-tooltip>
           <template slot-scope="scope">
             {{scope.row.time1|dateFormat}}—{{scope.row.time2|dateFormat}}
           </template>
         </el-table-column>
-        <el-table-column prop="type"label="类别" >
+        <el-table-column prop="type"label="类别" width="400">
         </el-table-column>
 
 

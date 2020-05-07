@@ -14,15 +14,15 @@
       <el-button type="primary" @click="getData">搜索</el-button>
       <el-table :data="listDate" style="margin-top: 20px;overflow: auto;max-height: 600px;" stripe>
 
-        <el-table-column prop="patentName"   label="专利名称"  align="center" show-overflow-tooltip>
+        <el-table-column prop="patentName"  width="400" label="专利名称" show-overflow-tooltip>
         </el-table-column>
-        <el-table-column prop="patentNum"label="专利号"  align="center">
+        <el-table-column prop="patentNum"label="专利号"  width="200">
         </el-table-column>
-        <el-table-column prop="patentType"label="专利类型"  align="center">
+        <el-table-column prop="patentType"label="专利类型" >
         </el-table-column>
-        <el-table-column prop="patentAuthor"label="设计人"  align="center">
+        <el-table-column prop="patentAuthor"label="设计人" width="100%">
         </el-table-column>
-        <el-table-column prop="patentTime"label="授权时间" :formatter="dateFormat" align="center">
+        <el-table-column prop="patentTime"label="授权时间"  :formatter="dateFormat">
         </el-table-column>
         <!--        <el-table-column prop="image" label="图片" min-width="20%" >-->
         <!--        </el-table-column>-->
@@ -35,14 +35,14 @@
 
         <!--        <el-table-column  label="操作" show-overflow-tooltip>-->
         <!--        </el-table-column>-->
-        <el-table-column label="操作"  align="center" show-overflow-tooltip v-if="showButton">
+        <el-table-column label="操作"  show-overflow-tooltip v-if="showButton">
           <template slot-scope="scope" >
-            <el-button class="new-button" label="操作" align="center" v-if="showButton"
+            <el-button class="new-button" label="操作"v-if="showButton"
                        :style="{color:'#198ce9','cursor':'pointer'}"
                        type="primary" @click="toPage(scope.row)"
             ><span style="color: black">编辑</span></el-button>
 
-            <el-button class="new-button"  label="操作" align="center" v-if="showButton"
+            <el-button class="new-button"  label="操作"  v-if="showButton"
                        :style="{color:'#198ce9','cursor':'pointer'}"
                        type="primary" @click="getId(scope.row.id)"
             ><span style="color: black">删除</span></el-button>
