@@ -24,7 +24,7 @@
           <div class="imagepage">
             <div>
               <h1 class="title-style">{{title}}</h1>
-              <h4 class="time-style"><span>发表时间：</span>{{createTime}}</h4>
+              <h4 class="time-style"><span>发表时间：</span>{{createTime|dateFormat}}</h4>
             </div>
 
             <el-divider></el-divider>
@@ -96,9 +96,9 @@
         this.title = data.extend.results[0].newsTitle
         this.content = data.extend.results[0].newsContent
         var time1 = data.extend.results[0].createTime;
-        this.createTime = time1.split("T")[0]
+        this.createTime = new Date(time1);
         console.log(this.title)
-        if (localStorage.getItem("role") === "admin") {
+        if (localStorage.getItem("role") == "admin") {
           this.showButton = true;
         }else {
           this.showButton = false;
