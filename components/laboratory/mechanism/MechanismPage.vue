@@ -70,7 +70,7 @@
         this.content = data.extend.results[0].agenciesIntroduce
         this.id = data.extend.results[0].id
         var time1 = data.extend.results[0].createTime;
-        this.createTime = time1.split("T")[0]
+      
         console.log(this.title)
         if (localStorage.getItem("role") === "admin") {
           this.showButton = true;
