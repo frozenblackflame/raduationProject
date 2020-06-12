@@ -55,7 +55,7 @@
 <!--        </el-card>-->
 <!--      </el-col>-->
       <el-col :span="24">
-        <el-card class="box-card">
+        <el-card class="box-car">
           <div slot="header" class="clearfix">
             <span class="card_title">科技成果</span>
             <nuxt-link to="/information/technologicalAchievements/list" style="float: right; padding: 3px 0" type="text">更多>>></nuxt-link>
@@ -229,6 +229,10 @@
 
   .box-card {
     width: 97%;
+
+  }
+  .box-car {
+    width: 99%;
 
   }
 
