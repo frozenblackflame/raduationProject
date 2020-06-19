@@ -32,7 +32,7 @@
           <el-menu-item index="/result/research/Winning">科研获奖</el-menu-item>
           <el-menu-item index="/result/research/patent">软著作权</el-menu-item>
           <el-submenu index="4-1-1">
-            <template slot="title">科研反哺教学</template>
+            <template slot="title">教学成果</template>
             <el-menu-item index="/result/research/teaching/project">教改项目</el-menu-item>
             <el-menu-item index="/result/research/teaching/Winning">竞赛获奖</el-menu-item>
             <el-menu-item index="/result/research/teaching/article">教改论文</el-menu-item>
